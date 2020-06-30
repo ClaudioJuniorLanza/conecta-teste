@@ -1,0 +1,253 @@
+// Entendendo o fluxo:
+// ->saveToDatabase:   checkForErrors -> modifyAlias -> modifyString -> query()
+// ->loadFromDatabase: modifyAlias -> setValue
+//
+// Sendo assim, uma vez passado pela validação, as strings serão
+// processadas pelo modifier, e não será validada novamente.
+// 
+// Cuidados a serem tomados:
+//   - A validação pode alterar o valor de uma string, sem problemas.
+//   - Se o modifier produzir valores inconsistentes, haverá erro no database
+//   - Para os modifiers serem trazidos para o usuário, o objeto deve
+//     ser salvo (saveTo) e carregado novamente (loadFrom).
+// -----------------------------------------------------------------------------
+// 30/05/13 (v2.97)
+// - Segurança: Erro SQL não é mais tratado como um erro comum, e a mensagem de
+//   erro não será mais exibida na tela, mas será tratada da seguinte forma:
+//     "Falha interna não tratada em dDbRow. Favor contactar o suporte."
+// 04/06/12 (v2.96)
+// - Bugfix: serialize_text agora identifica e remove \n das strings.
+// 20/05/12 (v2.95)
+// - Adicionado parâmetro $ignoreErrors em saveToArray(), para exportar sempre.
+// 25/04/12 (v2.94)
+// - Bugfix: Unique não funcionava direito com datas e horas.
+// 05/04/12 (v2.93)
+// - Novas validações: cnpj, cpf_cnpj
+// - Novos modificadores: cpf, cnpj, cpf_cnpj
+// - Melhorado modificador number_mask
+// 22/02/11 (v2.92)
+// - Otimização em loadFromDatabase(false) - Retorna FALSE antes de processar.
+// 19/05/10 (v2.92)
+// - Nova idéia: Testes automatizados para verificar a integridade da classe.
+//               Exemplo:
+//                  $this->methodAccept($nome, 'string,false'), $this->methodReturns('boolean'), $this->methodFailed($reason)
+//                  $this->performFullTest() (Cria um objeto, salva, roda todos os métodos e exclui o objeto, retornando T/F a cada passo)
+//                  $obj = Class::createSampleObject(), que não precisa ter dados inseridos.
+// 26/04/10 (v2.91)
+// - Novos métodos: ->setOriginal, ->isModified e ->getOriginal
+// 12/10/09 (v2.9)
+// - Novo modifier: GIS para trabalhar com GIS. (AsText e GeomFromText)
+// 06/09/09
+// - HTMLCleaner atualizado para aceitar <font> no RTE e outros (justify, text-ident)
+// - appendErrors retorna falso se receber um não-objeto
+// 18/07/09 (v2.898)
+// - Possibilidade de usar "as XXX" ao adicionar uma tabela externa. addFTable("tabelas as tb", ...)
+// 08/06/09
+// - Alterado CORE do checkForErrors, para permitir adicionar novas verificações on-demand.
+//   Importante: Enviar como "aliasName" do callback, o field 'id'.
+// 27/02/09
+// - Modificada classe HTMLCleaner para manter alguns tipos de estilos (float, margin, color)
+// 20/01/09
+// - Incorporada classe HTMLCleaner, por Lucian Sabo
+// - Novos modifiers 'from_rte', 'remove_accents'
+// - Modifier 'remove_spaces' pode ter parâmetro o novo caractere
+// 14/01/09 (v2.896)
+// - Nova validação e modifier: 'cpf'
+// 30/11/08 (v2.895)
+// - Separação dos métodos validateAlias e modifyAlias em validateString e modifyString,
+//   para permitir extensões, como a dDbRowExt.
+// 26/03/08
+// - Bug na validação de e-mail com underline antes do '@'
+// - Novo modifier 'url'
+// 13/03/08
+// - Bug com método reset(), duplicava o uso de modifiers
+// 19/10/07
+// - Novos modifiers: 'serialize' e 'serialize_text'
+// - Novo parâmetro '$raw', agora também em getValue()
+// 10/10/07
+// - Adicionado modificador 'number_mask'
+// 12/08/07
+// - Corrigido problema com loadFromDatabase e $aliasAsPrimary.
+// 28/07/07 (2.894)
+// - Corrigida função 'loadFromArray', aceitando chaves com valor NULL
+// 10/07/07
+// - Corrigida validação 'datetime', para aceitar apenas hh:mm.
+// 09/05/07
+// - Método '__destruct' adicionado - Sem função extra.
+// 03/05/07 (2.893)
+// - Método 'getVirtual' retorna FALSE caso não exista a variável virtual
+// 14/04/07 (2.892)
+// - Novo método: appendErrors(dDbRow $Object). Importa lista de erros de outro objeto
+// 23/03/07 (2.891)
+// - Validação e modifiers 'date' e 'datetime' 'US' corrigidos
+// 08/03/07 (2.89)
+// - Método 'checkForErrors' agora aceita string como parametro p/ ignorar campos
+// 25/02/07 (2.88)
+// - Correção no modificador singleline, ereg não aceita Array() como parametro
+// - Correção em validateAlias, disparando aviso quando valor era NULL
+// - Modificador 'date':'br' agora identifica anos abaixo de 25 como 2025
+// 22/02/07 (2.87)
+// - Novos métodos: startUpdate e flushUpdate, para atualização em tempo real
+// - Corrigido problema com validação 'date' e 'datetime'
+// 04/02/07 (2.86)
+// - Modificador 'date' renomeado para 'datetime', retorna dd/mm/yy hh:ii:ss
+// - Modificador 'date' modificado, retorna do banco de dados apenas dd/mm/yy
+// - Parametro do modificador 'date' e 'datetime' agora é case-insensitive
+// 18/01/07 (2.85)
+// - Adicionado parâmetro $aliasAsPrimary para loadFromDatabase()
+// 13/12/06 (2.84)
+// - O valor padrão de um campo recém-declarado é FALSE, e não mais NULL.
+// 22/11/06
+// - Não é mais necessário passar o parâmetro $db para o construtor
+// - Adicionadas validações: 'date' e 'datetime', parametros: 'br' e 'us'
+// 11/11/06
+// - Corrigido problema com addValidation(false, 'callback', 'metodo')
+// - Adicionada mensagem user-friendly caso o alias não exista em addValidation
+// - Novo modificador 'null_if_empty'
+// - Novo modificador 'date' (Parâmetros: 'br')
+// 15/09/06
+// - Adicionado modificador 'force_numbers' para CEPs, documentos e afins.
+// 23/08/06 (2.82)
+// - saveToDatabase(), Se não houver um auto_increment, retornará TRUE ao invés do ID
+// - validateUnique(), Se estiver verificando UNIQUE na Primary Index, forçar a verificação
+// 17/06/06
+// - setValue(), melhorada a mensagem de debug. Separação de tipos (bool, array, etc)
+// 21/04/06
+// - Agora as validações por callback são chamadas mesmo se não houver valor
+// 18/03/06
+// - Resolvido BUG com zero e force_int (estava setando null) (era bug?)
+// 09/02/06
+// - Resolvido problema ao pegar vários campos estrangeiros, estava dando
+//   vários 'join'.
+// 24/01/06 (2.8)
+// - Novo método: useOnlyFields()
+// - Renomeado "unload()" para "reset()"
+// - Modifier 'force_int' foi adaptado para ser compatível com MySQL5 e
+//   DEVE ser utilizado em todos os campos inteiros.
+// 11/01/06 (2.7)
+// - Adicionados métodos para variáveis virtuais: setVirtual(), getVirtual()
+// - addFField agora suporta vários campos separados por vírgula (tal como addField)
+// 03/01/06
+// - Adicionado validação NUMMIN e NUMMAX
+// 27/12/05 (2.64)
+// - Agora o parâmetro 'ignoreFields' do método 'loadFromArray' pode ser uma string
+// 08/12/05 (2.63)
+// - NOTICES são disparados ao tentar getValue ou setValue em aliases inexistentes
+// - force_float agora vai enviar/retornar um float ao invés de uma string
+// - force_numbers foi removido, pois agora todo não float é enviado como string
+// - force_string renomeado para force_legible. Também aceita números agora
+// 04/11/05
+// - Otimizado modifier 'force_float'
+// 31/10/05
+// - Adicionado STR Modifier 'force_float' para moedas
+// 29/10/05
+// - Corrigido erro de espaço em (delete from TABLE*WHERE...)
+// - Adicionado método Unload()
+// 24/10/05
+// - Adicionada variável 'useQuotes' para definir o uso de aspas delimitando campos
+// - Adicionada extensão para SQLite. AVISO: SQLite não tem suporte à quotes
+// 28/09/05
+// - Corrigido bug com primaryValue que muda para 'NULL' sempre que é editado
+// 22/09/05
+// - Adicionada funcionalidade para primary keys: find, find/update e update
+// - Adicionado método getPrimaryValue()
+// - Reparados vários bugs na parte de tabelas estrangeiras
+// - Reparado bug de strModifier modificando itens vazios
+// - Mais aspas em nomes de fields
+// 13/09/05
+// - Adicionado aspas nos nomes de fields, para evitar problemas em queries (insert/update)
+// 16/07/05
+// - Consertado o problema com fields RAW e validação/modificação
+// - loadFromArray agora tem outro parametro, $fromDb. Se true, aplica validação reversa padrão.
+// 26/07/05
+// - Adicionado auto-debug via GET
+// - Adicionado parâmetro "true" ao listErrors, para retornar array único
+// - Corrigido bug da validação 'int'
+// 10/08/05
+// - Adicionado método setPrimaryValue($value, $setValue=false)
+
+/****************************************************
+  dDbRow for PHP5
+  
+  This class was written to provide users who don't like
+  much SQL Syntax, to easily interact with databases,
+  including foreign keys, validations, dates and similars.
+  
+  If you want to have full power, use together with the
+  dDbSearch class, a class that allows you to search through,
+  any kind of database data, including foreign keys as well.
+  
+  To do list:
+  - Database error handling
+  - Code optimization
+  
+  Author: Alexandre Tedeschi (d)
+  E-Mail: alexandrebr # gmail.com (MSN and GTALK as well)
+  Londrina - PR / Brazil
+  
+  Public attributes:
+  - debug           (false/true)
+  
+  Public methods:
+  - loadFromDatabase(primaryValue, aliasAsPrimary)
+  - loadFromArray   (stack, ignore, fromdb)
+  - saveToDatabase  (primaryIndex)
+  - saveToArray     ()
+  - getPrimaryValue ()
+  - setPrimaryValue (value, setValue=false)
+  - getValue, getVirtual (aliasname)
+  - setValue, setVirtual (aliasname, value, raw)
+  
+  Primary key can ONLY be:
+  - 'find'        // procura, mas não retorna erro se não for encontrado
+  - 'ignore'      // ignora alterações no alias
+  - 'update'      // Sempre atualiza
+  - 'create'      // sempre cria
+  - 'find/error'  // procura, senão dá erro
+  - 'find/create' // procura, senão cria a chave
+  - 'find/update' // procura. se não encontrar, atualiza atual
+  
+  Not Primary keys can ONLY be:
+  - 'ignore' // ignora alterações
+  - 'update' // atualiza resultados
+  
+  Predef Errors:
+  - 'find/error' (Linked to foreign keys)
+  
+  Validations:
+  - 'required'
+  - 'callback' [function]
+  - 'int'
+  - 'nummin' [min]
+  - 'nummax' [max]
+  - 'email'
+  - 'strmin' [min]
+  - 'strmax' [max]
+  - 'strexact' [length]
+  - 'singleline'
+  - 'regex'  [regex]
+  - '!regex' [regex]
+  - 'unique' [matching_fields]
+  
+  Str modifiers:
+  - 'trim'
+  - 'force_int'
+  - 'force_float'
+  - 'force_legible'
+  - 'cpf'
+  - 'lower'
+  - 'upper'
+  - 'ucfirst'
+  - 'ucwords'
+  - 'remove_double_spaces'
+  - 'remove_spaces'
+  - 'null_if_empty'
+  - 'date'     [zone: br|us]
+  - 'datetime' [zone: br|us]
+  - 'serialize'
+  - 'serialize_text'
+  - 'callback' [function]
+  - 'from_rte'
+  - 'remove_accents'
+****************************************************/
+

@@ -1,0 +1,48 @@
+@import "_base";
+
+// Página de contato:
+.mapPage {
+  display:   flex;
+  flex-wrap: wrap;
+  width:    100%;
+  justify-content: space-around;
+  .theForm{
+    display: block;
+    flex-grow: 1;
+    flex-basis: 50%;
+	max-width: 580px;
+    padding: 16px;
+    label, input, select, small { display: block }
+    label { display: none }
+    input, select, textarea { padding: 8px; margin-bottom: 8px; width: 100%; border: 1px solid #BBB; border-radius: 8px }
+    .curriculum {
+      display: none;
+      padding: 8px;
+      margin-bottom: 8px;
+      border: 1px solid #BBB;
+      border-radius: 8px;
+      input { border: 0 !important; width: 100% }
+      label { display: inline-block !important;}
+    }
+  }
+  .otherContactOptions {
+    flex-grow: 1;
+    flex-basis: 50%;
+    min-width: 310px;
+	max-width: 350px;
+    padding: 16px;
+    a {
+      text-decoration: none;
+      color: #000;
+    }
+    >div {
+      margin-bottom: 8px;
+    }
+    >h2 {
+      padding-top: 16px;
+    }
+  }
+  input[type='submit']{
+    @include roundButton($primaryColor);
+  }
+}

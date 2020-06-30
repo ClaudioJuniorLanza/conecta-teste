@@ -1,0 +1,247 @@
+@import "_base";
+
+.chooseNegocio {
+	display:         flex;
+	justify-content: space-between;
+	flex-wrap:       wrap;
+	.opcao {
+		@include boxShadow;
+		background:      #FFF;
+		text-decoration: none;
+		text-align:      center;
+		width:           calc(33% - 8px);
+		padding-bottom:  12px;
+		margin-bottom:   16px;
+		@media (max-width: 930px) {
+			width:        calc(50% - 8px);
+			margin-left:  auto;
+			margin-right: auto;
+		}
+		
+		.titleOnGradient {
+			position: relative;
+			small {
+				position:      absolute;
+				left:          16px;
+				background:    #FFF;
+				border-radius: 16px;
+				color:         #000;
+				padding:       4px 10px;
+				font-size:     14px;
+				font-weight:   bold;
+			}
+		}
+		.iconHolder {
+			text-align: center;
+			padding:    32px 0;
+			img {
+				opacity: .75;
+			}
+		}
+		.roundBtn {
+			display:         flex;
+			align-items:     center;
+			justify-content: center;
+			font-size:       16px;
+			font-weight:     bold;
+			color:           #FFF;
+			text-align:      center;
+			margin:          0 auto;
+			max-width:       186px;
+			padding:         8px;
+			min-height:      40px;
+			width:           calc(100% - 8px); // 4px de cada lado, de borda.
+			border-radius:   20px;
+			background:      #B3B3B3;
+			text-transform:  uppercase;
+		}
+		&:hover {
+			.iconHolder img {
+				opacity: 1;
+			}
+			.roundBtn {
+				background: #929292;
+			}
+		}
+	}
+}
+
+.novoAnuncio {
+	@include boxShadow;
+	font-size:      18px;
+	padding-bottom: 0;
+	@media (max-width: 500px) {
+		font-size: 16px;
+	}
+	
+	.chooseCultura {
+		background: #EBEBEB;
+		padding:    32px 16px;
+		text-align: center;
+		.inputCultura {
+			display:     inline-flex;
+			align-items: center;
+			flex-wrap:   wrap;
+			.variTitle {
+				margin:      0 16px;
+				font-weight: bold;
+				font-size:   20px;
+			}
+			.inpAndBtn {
+				display:     flex;
+				position:    relative;
+				align-items: center;
+				margin:      0 auto;
+				input {
+					border:         1px solid #CCC;
+					padding:        12px 16px;
+					text-align:     center;
+					color:          $primaryColorD;
+					font-weight:    bold;
+					font-family:    Exo;
+					font-size:      18px;
+					text-transform: uppercase;
+					@media (max-width: 500px) {
+						font-size: 16px;
+					}
+				}
+				.actionBtn {
+					margin-left: 16px;
+					a {
+						font-size:       16px;
+						color:           $primaryColor;
+						text-decoration: none;
+						font-weight:     400;
+					}
+				}
+				.warningMessage {
+					margin-left: 16px;
+					font-size:   14px;
+					text-align:  left;
+					color:       #444;
+					position:    absolute;
+					font-weight: 400;
+					width:       100%;
+					margin-top:  36px;
+				}
+			}
+		}
+		.itemFound {
+			display:         flex;
+			flex-wrap:       wrap;
+			padding-top:     16px;
+			justify-content: center;
+			
+			> div {
+				display:     flex;
+				align-items: center;
+				&:last-of-type {
+					margin-left: 32px;
+				}
+			}
+			.txtCultura, .txtTecnologia {
+				border:          1px solid #CCC;
+				margin-left:     12px;
+				background:      #FFF;
+				height:          50px;
+				display:         flex;
+				align-items:     center;
+				justify-content: center;
+				min-width:       150px;
+			}
+		}
+		
+		&.initial {
+			
+		}
+		&.onTroca {
+			margin-bottom: 32px;
+		}
+	}
+	.moreInfo {
+		padding:    16px;
+		text-align: center;
+		.inputBlock {
+			margin-bottom: 32px;
+			display:       flex;
+			flex-wrap:     wrap;
+			h2 {
+				font-weight: bold;
+				font-size:   20px;
+				width:       100%;
+			}
+			.inpGrp {
+				//border:          1px solid #EEE;
+				width:           48%;
+				margin:          4px 4px;
+				display:         flex;
+				align-items:     center;
+				justify-content: flex-end;
+				padding:         8px;
+				
+				@media (max-width: 750px) {
+					width: 100%;
+				}
+				
+				span {
+					&:first-of-type {
+						text-align:   right;
+						margin-right: 12px;
+					}
+					&:nth-of-type(2) {
+						width: 50%;
+					}
+					input, select {
+						padding:     12px 4px;
+						font-family: Exo;
+						font-size:   18px;
+						width:       100%;
+					}
+					a {
+						font-size: 14px;
+						color:     #00F;
+					}
+				}
+			}
+			
+			.txtEmbalagem {
+				display: inline;
+			}
+			.btnInformRoyalties {
+				font-size:       12px;
+				color:           #666;
+				text-decoration: underline;
+			}
+			.tIndustrial {
+				width:          48%;
+				margin:         4px 4px;
+				display:        flex;
+				flex-direction: column;
+				@media (max-width: 750px) {
+					width: 100%;
+				}
+				.inpGrp {
+					width:  auto;
+					margin: 0;
+				}
+				.txtTratamento {
+					padding-right: 12px;
+					padding-left:  12px;
+					input {
+						width:      100%;
+						text-align: center;
+						font-size:  16px;
+						padding:    4px 8px;
+					}
+				}
+			}
+		}
+	}
+	.introAnalise {
+		text-align: center;
+		max-width:  280px;
+		font-size:  14px;
+		margin:     0 auto;
+		margin-top: 8px;
+	}
+}

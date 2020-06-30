@@ -1,0 +1,160 @@
+@import '_base';
+
+.agente {
+	padding: 16px;
+	h1 {
+		text-align: left;
+		margin:     0;
+		padding:    0;
+	}
+	
+	.backLine {
+		margin-bottom: 12px;
+		a {
+			text-decoration: none;
+		}
+	}
+	
+	.displayErrorBox {
+		border:        1px solid #900;
+		background:    #FCC;
+		padding:       12px;
+		margin-bottom: 16px;
+		font-size:     15px;
+	}
+	.displaySuccessBox {
+		border:        1px solid #090;
+		background:    #CFC;
+		padding:       12px;
+		margin-bottom: 16px;
+		font-size:     15px;
+	}
+	.roundBotao {
+		// Nomes diferentes importantes pra ficar mais fácil de achar o css equivalente.
+		display:         inline-block;
+		border:          0;
+		border-radius:   8px;
+		background:      #CEC;
+		padding:         4px 8px;
+		color:           #000;
+		text-decoration: none;
+		margin:          2px;
+		font-size:       16px;
+		&:hover {
+			background: #58EEC3;
+		}
+		&.menor {
+			font-size: 14px;
+		}
+		
+	}
+	
+	&.fullHeight {
+		min-height:     100%;
+		display:        flex;
+		flex-direction: column;
+	}
+	
+	&.vendedor {
+		.onBottom {
+			@media(max-width: 750px) {
+				margin-top: auto;
+			}
+			.accentBotao {
+				background:      $accentColor;
+				padding:         12px 16px;
+				color:           #FFF;
+				font-size:       18px;
+				font-weight:     bold;
+				border-radius:   8px;
+				text-align:      center;
+				text-decoration: none;
+				width:           100%;
+				display:         block;
+				border:          0;
+				&:hover {
+					background: $accentColorD;
+				}
+			}
+		}
+		.vendaResults {
+			@media (max-width: 750px) {
+				width: calc(100vw - 32px);
+			}
+			overflow-x: scroll;
+			.alertRotate {
+				color:         #008;
+				font-size:     small;
+				margin-bottom: 8px;
+				@media (min-width: 600px) {
+					display: none;
+				}
+			}
+			.tabela {
+				font:        12px Arial;
+				white-space: nowrap;
+				thead th {
+					white-space: nowrap;
+					background:  #CEC;
+				}
+				tbody tr {
+					background: #EEE;
+					&:nth-child(even) {
+						background: #DDD;
+					}
+				}
+			}
+		}
+	}
+}
+
+.cotacaoForm {
+	select, input {
+		font-size: 16px;
+		padding:   8px;
+		border:    1px solid #CCC;
+	}
+	.twoCols {
+		display: flex;
+		> div:not(:first-of-type) {
+			margin-left: 16px;
+		}
+	}
+}
+
+.reviewInsertData {
+	font:        12px Arial;
+	white-space: nowrap;
+	thead th {
+		white-space: nowrap;
+		background:  #CEC;
+	}
+	tbody tr {
+		background: #EEE;
+		&:nth-child(even) {
+			background: #DDD;
+		}
+		&.withError {
+			background: #FCC !important;
+		}
+	}
+}
+
+.smallTable {
+	font:        12px Arial;
+	white-space: nowrap;
+	thead th {
+		white-space: nowrap;
+		background:  #CEC;
+	}
+	tbody tr {
+		background: #EEE;
+		&:nth-child(even) {
+			background: #DDD;
+		}
+		&.withError {
+			background: #FCC !important;
+		}
+	}
+	
+}

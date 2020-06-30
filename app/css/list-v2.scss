@@ -1,0 +1,486 @@
+@import '_base';
+
+.anuncListV2 {
+	
+	@media (max-width: 750px) {
+		background: #EEE;
+	}
+	.caract {
+		display:     inline-flex;
+		flex-wrap:   wrap;
+		align-items: center;
+		font-size:   15px;
+		margin:      4px 0 4px 0;
+		@media (max-width: 750px) {
+			font-size: 14px;
+			margin:    2px 8px 2px 0;
+		}
+		i {
+			margin-right: 8px;
+			font-style:   inherit;
+		}
+		b {
+			border:     1px solid #CCC;
+			padding:    2px 12px;
+			background: #FFF;
+		}
+		span {
+			font-size:   14px;
+			margin-left: 8px;
+			font-style:  italic;
+		}
+	}
+	.anuncRow {
+		@include boxShadow;
+		$fotoW: 134px;
+		$fotoH: 134px;
+		background:    #FFF;
+		margin-bottom: 24px;
+		@media (max-width: 750px) {
+			margin-bottom: 8px;
+		}
+		.fotoAndDetails {
+			display: flex;
+			.foto {
+				flex-grow:           0;
+				flex-shrink:         0;
+				width:               $fotoW;
+				height:              $fotoH;
+				//background:       #CCC;
+				position:            relative;
+				overflow:            hidden;
+				background-image:    url(../images/soybeans-with-sprout-1.jpg);
+				background-position: center center;
+				background-size:     cover;
+				@media (max-width: 650px) {
+					display: none;
+					width:   100px;
+					height:  120px;
+				}
+				.new {
+					margin-top:  -6px;
+					margin-left: -25px;
+					padding:     12px 18px 0px 18px;
+					background:  rgba($accentColor, .75);
+					color:       #FFF;
+					transform:   rotate(-45deg);
+					font-size:   14px;
+					display:     inline-block;
+				}
+				.sub {
+					position:   absolute;
+					bottom:     0;
+					left:       0;
+					right:      0;
+					background: rgba(#000, .5);
+					color:      #FFF;
+					text-align: center;
+				}
+			}
+			.details {
+				padding:   0 16px;
+				flex-grow: 1;
+				position:  relative;
+				.variedade {
+					font-size:     18px;
+					color:         $primaryColor;
+					font-weight:   bold;
+					margin-bottom: 8px;
+					i {
+						font-family: Arial;
+						font-size:   12px;
+						color:       #888;
+						font-weight: normal;
+						//b {
+						//@media (min-width: 750.01px) {
+						//	display: none;
+						//}
+						//}
+					}
+				}
+				.rightSide {
+					position:      absolute;
+					right:         0;
+					top:           0;
+					white-space:   nowrap;
+					display:       flex;
+					padding-right: 8px;
+					@media (max-width: 650px) {
+						display: none;
+					}
+				}
+				.caract b {
+					@media (max-width: 750px) {
+						border:  0;
+						padding: 0;
+					}
+				}
+			}
+		}
+		
+		.moreAbout {
+			width: 100%;
+			.actions {
+				padding:     12px 16px 8px ($fotoW + 16px);
+				text-align:  left;
+				display:     flex;
+				align-items: flex-start;
+				@media (max-width: 650px) {
+					padding: 12px 16px 8px 16px;
+				}
+				
+				> a {
+					display:       inline-block;
+					border-radius: 8px;
+					padding:       4px 16px;
+					margin:        0 8px;
+					font-size:     16px;
+					&:first-of-type {
+						margin-left: 0;
+					}
+				}
+				.btnMaisInformacoes {
+					background:      #999;
+					transition:      all .3s;
+					color:           #FFF;
+					text-decoration: none;
+					text-align:      center;
+					span {
+						display: inline-block;
+					}
+					.fa {
+						transition: all .3s;
+					}
+					&.btnClose {
+						background: #888;
+						.fa {
+							transform: rotate(-90deg);
+						}
+					}
+				}
+				.btnRemoverAnunc {
+					text-decoration: none;
+					font-size:       14px;
+					text-align:      center;
+					background:      #EEE;
+					color:           #000;
+					small {
+						display:   block;
+						font-size: 12px;
+						color:     #666;
+					}
+				}
+				.btnReactivateAnunc {
+					text-decoration: none;
+					text-align:      center;
+					background:      $primaryColor;
+					color:           #FFF;
+					font-weight:     bold;
+					small {
+						font-weight: 400;
+						display:     block;
+						font-size:   12px;
+					}
+					
+				}
+				.notInterestedGroup {
+					display: inline-block;
+					a {
+						display: block;
+						
+					}
+					.btnNotInterested {
+						display:       inline-block;
+						border-radius: 8px;
+						padding:       4px 16px;
+						margin:        0 8px;
+						color:         #666;
+						font-size:     12px;
+						@media (max-width: 650px) {
+							margin:  0;
+							padding: 0;
+						}
+					}
+					.expandNi {
+						position:    absolute;
+						z-index:     2;
+						background:  #FFF;
+						margin-left: 8px;
+						border:      1px solid #999;
+						@media (max-width: 650px) {
+							right: 16px;
+						}
+						> b {
+							display:   inline-block;
+							padding:   4px 8px 0 8px;
+							color:     #000;
+							font-size: 14px;
+						}
+						> a {
+							font-family:     Arial;
+							font-size:       12px;
+							display:         block;
+							margin:          0;
+							padding:         4px 8px 4px 16px;
+							text-decoration: none;
+							color:           $accentColor;
+							&:hover {
+								background: $accentColorL2;
+							}
+						}
+						.managePrefs {
+							border-top:  1px solid $dividerColor;
+							text-align:  center;
+							color:       #444;
+							font-size:   12px;
+							font-weight: bold;
+						}
+					}
+				}
+				
+				.green {
+					background: $primaryColor;
+				}
+			}
+			.expand {
+				border-top: 1px solid $dividerColor;
+				.maisDados {
+					background: linear-gradient(to top, #FFF 0, #F4EFE9 100%);
+					padding:    8px 16px;
+					> b {
+						display:       block;
+						padding:       8px 0;
+						border-bottom: 1px solid #CCC;
+						margin-bottom: 12px;
+						margin-top:    12px;
+						&:first-of-type {
+							margin-top: 0;
+						}
+					}
+				}
+			}
+			.makeOfferGroup {
+				.btnToggleOffer {
+					display:         block;
+					background:      $primaryColor;
+					color:           #FFF;
+					//color:         $primaryColor;
+					//background:    #FFF;
+					text-decoration: none;
+					font-weight:     bold;
+					padding:         8px 16px;
+					border-bottom:   1px solid #CCC;
+					.fa {
+						transition: all .3s;
+					}
+				}
+				.introText {
+					background: #FFC;
+					padding:    16px;
+					.btnCloseIntro {
+						float:           right;
+						text-decoration: none;
+						color:           #000;
+						font-size:       14px;
+						font-family:     Arial;
+						&:hover {
+							color: $primaryColor;
+						}
+					}
+				}
+				.offerExpand {
+					background: linear-gradient(to top, #FFF 100px, #E3FFE5 100%);
+					padding:    16px 16px 8px 16px;
+					.inpHolders {
+						display:         flex;
+						flex-wrap:       wrap;
+						justify-content: center;
+						.inpGrp {
+							margin: 0 16px;
+							@media (max-width: 750px) {
+								margin-bottom: 16px;
+							}
+							i {
+								display: block;
+							}
+							input, select {
+								padding:     4px 12px;
+								font-size:   16px;
+								font-family: Exo;
+								color:       #444;
+								
+							}
+							textarea {
+								width:       250px;
+								height:      84px;
+								padding:     4px 12px;
+								font-size:   16px;
+								font-family: Exo;
+								color:       #444;
+							}
+						}
+					}
+					.terms {
+						font-size:  14px;
+						margin:     0 16px 0 16px;
+						text-align: center;
+						label {
+							display:         flex;
+							align-items:     center;
+							justify-content: center;
+							> span {
+								margin-left: 12px;
+							}
+						}
+					}
+					.offerActions {
+						text-align:     center;
+						margin-top:     16px;
+						padding-bottom: 16px;
+						a {
+							display:   inline-block;
+							padding:   4px 16px;
+							margin:    0 8px;
+							font-size: 16px;
+							&:first-of-type {
+								margin-left: 0;
+							}
+						}
+						.btnConfirmOffer {
+							transition:      all .3s;
+							background:      $primaryColorD;
+							border-radius:   8px;
+							color:           #FFF;
+							text-decoration: none;
+						}
+						.btnCloseDetails {
+							color:           #666;
+							font-size:       12px;
+							text-decoration: none;
+							@media (max-width: 750px) {
+								display:    block;
+								margin-top: 8px;
+							}
+						}
+					}
+				}
+			}
+			.offerReceived {
+				text-align: center;
+				padding:    8px 16px 16px 16px;
+				background: linear-gradient(to bottom, #EEE 0, #FFF 100%);
+				> b {
+					color:         #0000FF;
+					display:       block;
+					margin-bottom: 8px;
+					font-size:     20px;
+				}
+				> span {
+					display:   block;
+					font-size: 16px;
+				}
+				.tutorialPropostasMenuLateral {
+					padding-top: 8px;
+					font-family: Arial;
+					font-size:   14px;
+				}
+				.btnAliasToClose {
+					display:         block;
+					color:           #000;
+					text-decoration: none;
+					margin-top:      8px;
+					&:hover {
+						color: $primaryColor;
+					}
+				}
+			}
+			
+			.myOffer {
+				padding:    8px 16px 16px 16px;
+				background: linear-gradient(to bottom, #EEE 0, #FFF 100%);
+				> b {
+					color:         $accentColor;
+					display:       block;
+					margin-bottom: 8px;
+					font-size:     20px;
+					border-bottom: 1px solid #CCC;
+				}
+			}
+			.listOffers {
+				padding: 8px 0 0 0;
+				> b {
+					padding-left:  16px;
+					padding-right: 16px;
+					color:         $accentColor;
+					display:       block;
+					font-size:     20px;
+					border-bottom: 1px solid #CCC;
+				}
+				.offerRow {
+					border-bottom: 1px solid $dividerColor;
+					background:    #FFF;
+					.propoTitle {
+						background:      #FFF;
+						display:         flex;
+						justify-content: space-between;
+						color:           #000;
+						text-decoration: none;
+						transition:      .3s;
+						.ptLeft {
+							padding: 8px 16px;
+						}
+						.ptRight {
+							padding-right: 16px;
+							padding-left:  16px;
+							display:       flex;
+							align-items:   center;
+						}
+						.fa {
+							transition: .3s;
+						}
+						&.shown {
+							background: #EEE;
+							.fa {
+								transform: rotate(90deg);
+							}
+						}
+					}
+					.propoBody {
+						background:     linear-gradient(to bottom, #EEE 0, #FFF 100%);
+						padding:        8px;
+						padding-bottom: 0;
+						.acceptTerms {
+							color: $primaryColor;
+						}
+						.propoActions {
+							margin-top: 8px;
+							border-top: 1px solid $dividerColor;
+							padding:    8px 0;
+							> a {
+								display:   inline-block;
+								padding:   4px 16px;
+								margin:    0 8px;
+								font-size: 16px;
+							}
+							.btnPropoAccept {
+								margin-left:     16px;
+								background:      $primaryColor;
+								border-radius:   8px;
+								color:           #FFF;
+								text-decoration: none;
+								text-align:      center;
+								&:hover {
+									background: $primaryColorD;
+								}
+							}
+							.btnPropoSemInteresse {
+								color:     #666;
+								font-size: 14px;
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -1,0 +1,41 @@
+[19-Jan-2019 09:52:49 America/Sao_Paulo] PHP Warning:  file_get_contents(/js/core/loadJs.min.js) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /home/conects/public_html/classes/core/dResLoader.inc.php on line 187
+[19-Jan-2019 09:52:49 America/Sao_Paulo] PHP Warning:  file_get_contents(/js/core/loadCss.min.js) [<a href='function.file-get-contents'>function.file-get-contents</a>]: failed to open stream: No such file or directory in /home/conects/public_html/classes/core/dResLoader.inc.php on line 188
+[29-Jan-2019 20:08:11 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 196
+[29-Jan-2019 20:08:20 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 196
+[29-Jan-2019 20:09:30 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 196
+[30-Jan-2019 15:23:21 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 22
+[31-Jan-2019 14:33:23 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 22
+[07-Feb-2019 17:51:23 America/Sao_Paulo] PHP Catchable fatal error:  Object of class cProposta could not be converted to string in /home/conects/public_html/classes/class_cAnuncio.php on line 638
+[08-Feb-2019 09:30:48 America/Sao_Paulo] PHP Catchable fatal error:  Object of class cProposta could not be converted to string in /home/conects/public_html/classes/class_cAnuncio.php on line 638
+[08-Feb-2019 14:11:56 America/Sao_Paulo] PHP Catchable fatal error:  Object of class cProposta could not be converted to string in /home/conects/public_html/classes/class_cAnuncio.php on line 638
+[09-Feb-2019 12:32:16 America/Sao_Paulo] PHP Catchable fatal error:  Object of class cProposta could not be converted to string in /home/conects/public_html/classes/class_cAnuncio.php on line 642
+[09-Feb-2019 13:01:02 America/Sao_Paulo] PHP Catchable fatal error:  Object of class cProposta could not be converted to string in /home/conects/public_html/classes/class_cAnuncio.php on line 642
+[09-Feb-2019 17:00:08 America/Sao_Paulo] PHP Catchable fatal error:  Object of class cProposta could not be converted to string in /home/conects/public_html/classes/class_cAnuncio.php on line 642
+[10-Feb-2019 09:29:21 America/Sao_Paulo] PHP Catchable fatal error:  Object of class cProposta could not be converted to string in /home/conects/public_html/classes/class_cAnuncio.php on line 642
+[12-Feb-2019 22:25:07 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 44
+[14-Feb-2019 13:09:12 America/Sao_Paulo] PHP Fatal error:  Call to undefined function opcache_compile_file() in /home/conects/public_html/admin/devtools/console.php(348) : eval()'d code on line 2
+[15-Feb-2019 19:44:52 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 44
+[25-Mar-2019 13:15:36 America/Sao_Paulo] PHP Notice:  Undefined index: ce03d7-selId in /home/conects/public_html/admin/devtools/ajax.console.php on line 81
+[26-Mar-2019 12:35:37 America/Sao_Paulo] PHP Fatal error:  Class 'dDatabase' not found in /home/conects/public_html/config.php on line 169
+[26-Mar-2019 12:35:43 America/Sao_Paulo] PHP Fatal error:  Class 'dDatabase' not found in /home/conects/public_html/config.php on line 169
+[26-Mar-2019 12:36:45 America/Sao_Paulo] PHP Fatal error:  Class 'dDatabase' not found in /home/conects/public_html/config.php on line 169
+[26-Mar-2019 12:37:22 America/Sao_Paulo] PHP Fatal error:  Class 'dDatabase' not found in /home/conects/public_html/config.php on line 169
+[26-Mar-2019 12:37:24 America/Sao_Paulo] PHP Fatal error:  Class 'dDatabase' not found in /home/conects/public_html/config.php on line 169
+[02-Apr-2019 13:02:37 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '[' in /home/conects/public_html/classes/class_cInvite.php on line 65
+[02-Apr-2019 13:02:59 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/conects/public_html/classes/class_cInvite.php on line 88
+[02-Apr-2019 13:03:01 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/conects/public_html/classes/class_cInvite.php on line 88
+[02-Apr-2019 13:03:02 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/conects/public_html/classes/class_cInvite.php on line 88
+[02-Apr-2019 13:03:02 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/conects/public_html/classes/class_cInvite.php on line 88
+[02-Apr-2019 13:03:22 America/Sao_Paulo] PHP Parse error:  syntax error, unexpected '[', expecting ')' in /home/conects/public_html/classes/class_cInvite.php on line 88
+[02-Apr-2019 13:04:05 America/Sao_Paulo] PHP Fatal error:  Call to undefined method cInvite::sendTeste() in /home/conects/public_html/classes/core/dDb/dDbRow3.inc.php on line 1831
+[02-Apr-2019 13:05:02 America/Sao_Paulo] PHP Fatal error:  Call to undefined method cInvite::sendTeste() in /home/conects/public_html/classes/core/dDb/dDbRow3.inc.php on line 1831
+[02-Apr-2019 17:46:50 America/Sao_Paulo] PHP Warning:  unlink() expects parameter 1 to be string, array given in /home/conects/public_html/admin/anunc_invite_list.php on line 59
+[02-Apr-2019 17:46:50 America/Sao_Paulo] PHP Warning:  unlink() expects parameter 1 to be string, array given in /home/conects/public_html/admin/anunc_invite_list.php on line 59
+[02-Apr-2019 17:48:07 America/Sao_Paulo] PHP Warning:  unlink() expects parameter 1 to be string, array given in /home/conects/public_html/admin/anunc_invite_list.php on line 59
+[02-Apr-2019 17:48:07 America/Sao_Paulo] PHP Warning:  unlink() expects parameter 1 to be string, array given in /home/conects/public_html/admin/anunc_invite_list.php on line 59
+[04-Apr-2019 13:56:09 America/Sao_Paulo] PHP Notice:  Undefined index: ce03d7-selId in /home/conects/public_html/admin/devtools/ajax.console.php on line 81
+[08-Apr-2019 10:38:24 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 44
+[08-Apr-2019 10:38:49 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 196
+[08-Apr-2019 10:39:01 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 196
+[09-Apr-2019 12:06:36 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 196
+[22-Apr-2019 13:16:08 America/Sao_Paulo] PHP Fatal error:  Call to a member function v() on a non-object in /home/conects/public_html/admin/anunc_edit.php on line 196

@@ -1,0 +1,7 @@
+Explicação sobre os arquivos "_c.*"
+----------------------------------------------------------------------------
+  Arquivos _c.* são gerados automaticamente pela classe dResLoader.
+  Arquivos _c.* devem ser ignorados no controle de versão.
+  Estes arquivos são gerados e excluídos automaticamente.
+  É seguro excluir estes arquivos manualmente, mas ele voltarão a aparecer.
+  Veja a documentação da classe dResLoader para mais informações.

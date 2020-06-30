@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Documentação Imaginacom Login</title>
+		<meta charset='latin1' />
+		<style>
+			* {
+				box-sizing: border-box;
+			}
+			.code {
+				background: #EEE;
+				border: 1px solid #999;
+				padding: 16px;
+				display: block;
+				margin-left: 32px;
+				font-size: 11px;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<h1>Login with Imaginacom</h1>
+		<p>
+			Um plugin simples e rápido para se logar utilizando as redes sociais.
+			<table>
+				<tr>
+					<td><div style="width: 189px; height: 32px; background-image: url(images/facebook-login.png);"></div></td>
+					<td><div style="width: 189px; height: 32px; background-image: url(images/facebook-login.png); background-position-x: -189px"></div></td>
+				</tr>
+				<tr>
+					<td><div style="width: 189px; height: 32px; background-image: url(images/google-login.png);"></div></td>
+					<td><div style="width: 189px; height: 32px; background-image: url(images/google-login.png); background-position-x: -189px"></div></td>
+				</tr>
+			</table>
+			<br />
+			Manual:<br />
+			Google: 
+<a href="https://developers.google.com/identity/sign-in/web/reference">https://developers.google.com/identity/sign-in/web/reference</a><br>
+Facebook:
+<a href="https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow">
+https://developers.facebook.com/docs/facebook-login/manually-build-a-login-flow</a><h2>Modo de uso</h2>
+		<p>
+			Inclua a API Javascript do <b>loginWithImaginacom</b>, e utilize o método .create() para renderizar o iframe.<br />
+<pre class='code'>&lt;script type='text/javascript' src='https://ws.imaginacom.com/login/api.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript'&gt;
+  var lwi = loginWithImaginacom.create(false, function(provider, token){ /* Login bem sucedido */ });
+&lt;/script&gt;
+-- ou --
+&lt;div id='myDiv'&gt;&lt;/div&gt;
+&lt;script type='text/javascript'&gt;
+loginWithImaginacom.create('myDiv', {
+	token:       none,              <i>// --> Opcional. Token <b>da IMAGINACOM</b> para customizar o AppId e AuthCode. A customização é feita no painel Gestão da IMAGINACOM.</i>
+	display:     none,              <i>// --> Opcional, mantém apenas a API disponível;</i>
+	providers:   'facebook,google', <i>// --> Opcional. Se não tiver uma lista, ativa tudo;</i>
+	checked:     'facebook,google', <i>// --> Muda o ícone para 'checked' nos provedores informados;</i>
+	autoCheck:   true,              <i>// --> Muda ícone para "checked" quando houver um login bem sucedido;</i>
+	autoLoading: true,              <i>// --> Alterna para "loading" enquanto a popup estiver aberta;</i>
+	onLogin:     function(provider, token, rawData){}
+	onLoginFail: function(provider, rawData){} <i>// Opcional</i>
+	onUncheck:   function(provider){}          <i>// Opcional</i>
+});
+&lt;/script&gt;</pre>
+		<b>Copy & Paste:</b>
+<pre class='code'>&lt;script type='text/javascript' src='https://ws.imaginacom.com/login/api.js'&gt;&lt;/script&gt;
+&lt;script type='text/javascript'&gt;
+loginWithImaginacom.create(false, {
+	checked: '',
+	onLogin: function(provider, token){
+		// Faça a validação server-side do token.
+		return true; // Retorne &quot;true&quot; para interromper a animação. Ou utilize this.setChecked(true|false) depois.
+	},
+	onUncheck: function(provider){
+		// Implemente este método para processar &quot;uncheck&quot;.
+		// Deixe em branco para utilizar o padrão de onLogin() ou onLoginFail()
+		return true; // Retorne &quot;true&quot; para interromper a animação. Ou utilize this.setChecked(true|false) depois.
+	},
+});
+&lt;/script&gt;</pre>
+				</p>
+
+		<h2>Tamanhos de exibição</h2>
+		<p>
+			<table border='1' cellpadding='4' cellspacing='0' style='border-collapse: collapse'>
+				<tr><td>Um ícone:</td><td>width='189' height='32'</td></tr>
+				<tr><td>Dois ícones:</td><td>width='189' height='80'</td></tr>
+			</table>
+		</p>
+		
+		<h2>Métodos da API (loginWithImaginacom)</h2>
+		<h3>.create(divId, options) <i>ou</i> .create(divId, onLogin)<br /></h3>
+		<blockquote>
+			<b>divId:</b><br />
+			ID do Div que receberá o rame, ou NULL para criar no local atual.<br />
+			<br />
+			<b>options:</b>
+			<table border='1' cellpadding='4' cellspacing='0' style='border-collapse: collapse'>
+				<tr valign='top'>
+					<td>token:<br /><small>Opcional.</small></td>
+					<td>
+						<i>(null)</i> | (string)<br />
+						<small>Padrão: null</small>
+					</td>
+					<td>
+						Token <b>da IMAGINACOM</b> para customizar o AppId e AuthCode.<br />
+						A customização é feita no painel Gestão da IMAGINACOM.
+					</td>
+				</tr>
+				<tr valign='top'>
+					<td>display:<br /><small>Opcional.</small></td>
+					<td><i>(null)</i> | 'none'<br>
+					<font size="2">Padrão: null</font></td>
+					<td>Não exibe o iframe, só disponibiliza os métodos</td>
+				</tr>
+				<tr valign='top'>
+					<td>providers:<br /><small>Opcional.</small></td>
+					<td>facebook,google<br>
+					<font size="2">Padrão: null</font></td>
+					<td>Restringir aos provedores informados.<br>
+					Se não informado, exibirá tudo que tiver disponível.</td>
+				</tr>
+				<tr valign='top'>
+					<td>checked:<br /><small>Opcional.</small></td>
+					<td>facebook,google<br>
+					<font size="2">Padrão: null</font></td>
+					<td>Altera o estado inicial dos provedores informados para &quot;checked&quot;</td>
+				</tr>
+				<tr valign='top'>
+					<td>autoCheck<br>
+					<small>Opcional.</small></td>
+					<td>true | false<br>
+					<font size="2">Padrão: true</font></td>
+					<td>Após o login bem sucedido, muda o ícone para &quot;checked&quot;</td>
+				</tr>
+				<tr valign='top'>
+					<td>autoLoading<br>
+					<small>Opcional.</small></td>
+					<td>true | false<br>
+					<font size="2">Padrão: true</font></td>
+					<td>Após abrir a popup, muda para &quot;loading&quot; até a popup ser 
+					fechada.</td>
+				</tr>
+				<tr valign='top'>
+					<td>onLogin:</td>
+					<td colspan="2"><code>
+callback(provider, token, rawData)<font size="1"><br>
+&nbsp;&nbsp;&nbsp;
+	// Provider pode ser 'google' ou 'facebook'<br />
+	&nbsp;&nbsp;&nbsp;
+	// Envie o token server-side para https://ws.imaginacom.com/login/checkAccessToken.php?provider=xxx&amp;token=yyy<br />
+&nbsp;&nbsp;&nbsp; // Retorne TRUE para interromper o Loading e mudar para &quot;checked&quot; 
+					(se autoCheck=true)</font></code></td>
+				</tr>
+				<tr valign='top'>
+					<td>onLoginFail:<br>
+					<small>Opcional.</small></td>
+					<td colspan="2">callback(provider, rawData)<br>
+					<code>
+					<font size="1">&nbsp;&nbsp;&nbsp;
+	// Provider pode ser 'google' ou 'facebook'<br />
+&nbsp;&nbsp;&nbsp; // Exemplos de rawData constam no final deste documento.<br>
+										&nbsp;&nbsp;&nbsp; // Opcional: Se não informado, mostrará 
+					alert() padrão.<br>
+&nbsp;&nbsp;&nbsp; // Retorne TRUE para interromper o Loading.</font></code><code style='font-size: 11px'><br>
+					<br>
+					Facebook: {</code><code><span style="font-size: 11px"> 
+					authResponse: undefined, status: undefined</span></code><code style='font-size: 11px'> 
+					}<br>
+					<a href="https://developers.google.com/identity/sign-in/web/reference#googleauthsigninoptions">
+					Google:</a>&nbsp;&nbsp; { error: &quot;popup_closed_by_user&quot; | 
+					&quot;access_denied&quot; <i>&nbsp;</i>| &quot;immediate_failed&quot; }</code></td>
+				</tr>
+				<tr valign='top'>
+					<td>onUncheck:<br>
+					<small>Opcional.</small></td>
+					<td colspan="2">callback(provider)<br>
+					<code>
+					<font size="1">&nbsp;&nbsp;&nbsp;
+	// Provider pode ser 'google' ou 'facebook'<br>
+										&nbsp;&nbsp;&nbsp; // Opcional: Se não informado, &quot;onLogin&quot; ou &quot;onLoginFail&quot; 
+					serão chamados.<br>
+&nbsp;&nbsp;&nbsp; // Retorne RUE para interromper o Loading e mudar para &quot;checked&quot;</font></code></td>
+				</tr>
+			</table>
+			</blockquote>
+		</blockquote>
+		
+		<h3>.setChecked(provider, yesno)</h3>
+		<blockquote>
+			Muda o ícone do provider em questão, para true=checked ou false=normal.<br />
+			<small>Envie 'loading' para animação de &quot;carregando&quot;</small>.</blockquote>
+		
+		<h3>.request(provider, method, params, callback)</h3>
+		<blockquote>
+			Chama os métodos disponíveis no Javascript Framework do provedor.<br />
+			<code><span style="font-size: 11px">var instance = 
+			loginWithImaginacom.create(...);<br>
+			instance</span></code><code style='font-size: 11px'>.request('facebook', "FB.getLoginStatus", function(authData){ console.log("Resultado de authData", authData) });</code><br />
+			<code><span style="font-size: 11px">instance</span></code><code style='font-size: 11px'>.request('facebook', "FB.api", "/me?fields=id,name,email" function(response){ ... });</code><br />
+		</blockquote>
+
+		
+		<h2>Validação server-side:</h2>
+		
+		<blockquote>
+		<h3>Validação rápida</h3>
+			O método &quot;onLogin&quot; vai te retornar o TOKEN, a ser utilizado na 
+			validação server-side.<br>
+			<code style='font-size: 11px'>
+				<font color='#FF0000'>$checkUrl</font> =
+					<font color="#0000FF">"https://ws.imaginacom.com/login/checkAccessToken.php<!--
+					-->?provider=<font color="#FF0000">{$provider}</font><!--
+					-->&access_token=<font color="#FF0000">{$token}</font>"</font>;<br />
+				<b>if</b>(<font color='red'>$TOKEN_IMAGINACOM</font>){<br />
+				&nbsp; <font color='#888888'>// Se você utilizou um token da imaginacom em .create, para customizar a tela de Login, utilize-o aqui também.</font><br />
+				&nbsp; <font color='red'>$checkUrl</font> .= <font color='blue'>"&token=<font color='red'>{$TOKEN_IMAGINACOM}</font>"</font>;<br />
+				}<br />
+				<font color="#FF0000">$userData</font> = json_decode(file_get_contents(<font color='red'>$checkUrl</font>));
+			</code><br />
+			<br />
+			<table border='1' cellpadding='4' cellspacing='0' style='border-collapse: collapse'>
+				<tr valign='top'>
+					<td>Google:<br /><font size="2">On Success</font></td>
+					<td><code style='font-size: 11px'><font color="#0000FF">&quot;sub&quot;: &quot;110169484474386276334&quot;, --&gt; Google User Id</font><br>
+										<font color="#009933">&quot;aud&quot;: &quot;1008719970978-hb24n2dstb40o45d4feuo2ukqmcc6381.apps.googleusercontent.com&quot;, 
+					--&gt; App Id<br>
+					</font>&quot;iss&quot;: &quot;https://accounts.google.com&quot;,<br>
+					&quot;azp&quot;: &quot;1008719970978-hb24n2dstb40o45d4feuo2ukqmcc6381.apps.googleusercontent.com&quot;,<br>
+					&quot;iat&quot;: &quot;1433978353&quot;,<br>
+					&quot;exp&quot;: &quot;1433981953&quot;,<br>
+					<br>
+					// These fields are only included when the user has 
+					granted the &quot;profile&quot; and &quot;email&quot; OAuth scopes to the 
+					application.<br>
+					&quot;email&quot;: &quot;testuser@gmail.com&quot;,<br>
+					&quot;email_verified&quot;: &quot;true&quot;,<br>
+					&quot;name&quot; : &quot;Test User&quot;,<br>
+					&quot;picture&quot;: &quot;https://lh4.googleusercontent.com/-kYgzyAWpZzJ/ABCDEFGHI/AAAJKLMNOP/tIXL9Ir44LE/s99-c/photo.jpg&quot;,<br>
+					&quot;given_name&quot;: &quot;Test&quot;,<br>
+					&quot;family_name&quot;: &quot;User&quot;,<br>
+					&quot;locale&quot;: &quot;en&quot;</code></td>
+				</tr>
+				<tr valign='top'>
+					<td>Google:<br /><font size="2">On Error</font></td>
+					<td><code><span style="font-size: 11px">
+					{ &quot;error_description&quot;: &quot;Invalid Value&quot; }<br>
+					{ &quot;error_description&quot;: &quot;Token pertence a outro AppId&quot; }</span></code></td>
+				</tr>
+				<tr valign='top'>
+					<td>Facebook:<br /><font size="2">On Success</font></td>
+					<td><code><span style="font-size: 11px">
+					<font color="#0000FF">&quot;user_id&quot;: &quot;10000000000071686&quot; --&gt; Facebook User Id</font><br>
+					<font color="#009933">&quot;app_id&quot;: &quot;640200002715250&quot;,</font><br>
+					&quot;type&quot;: &quot;USER&quot;,<br>
+					&quot;application&quot;: &quot;NOME_DO_APLICATIVO&quot;,<br>
+					&quot;data_access_expires_at&quot;: 1552090195,<br>
+					&quot;expires_at&quot;: 1544320800,<br>
+					&quot;is_valid&quot;: true,<br>
+					&quot;scopes&quot;: [&quot;email&quot;,&quot;public_profile&quot;]</span></code></td>
+				</tr>
+				<tr valign='top'>
+					<td>Facebook:<br /><font size="2">On Error</font></td>
+					<td><code><span style="font-size: 11px">
+					{&quot;error&quot;:{&quot;code&quot;:190,&quot;message&quot;:&quot;Bad signature&quot;},&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+					&quot;is_valid&quot;:false,&quot;scopes&quot;:[]}<br>
+					{&quot;error&quot;:{&quot;code&quot;:999,&quot;message&quot;:&quot;Token pertence a outro AppId&quot;},&quot;is_valid&quot;:false,&quot;scopes&quot;:[]}</span></code></td>
+				</tr>
+				</table>
+				<h3>Validação avançada/manual do acebook:</h3>
+				<blockquote>
+					Antes de utilizar um token, é importante validar se ele pertence ao nosso aplicativo.<br />
+					Para isso é importante o chamado a <font color="#0000FF">/checkAccessToken.php</font>, que vai retornar erro caso não seja.<br />
+				<pre class='code'>$fb = dFacebook::start('iPainel');
+
+// Se você não quiser verificar o /checkAccessToken embutido, você precisará de um app_id e um app_secret:
+if($useLoginApi){
+	$userData = json_decode(file_get_contents(&quot;https://ws.imaginacom.com/login/checkAccessToken.php?provider=facebook&amp;access_token=<font color="#FF0000">$token</font>&quot;), true);
+}
+else{
+	$fb->setConfig($APP_ID, $APP_SECRET);
+	$userData = $fb->debugToken(<font color="#FF0000">$token</font>);
+	// O retorno será idêntico ao descrito em &quot;Validação Rápida &gt; Facebook On Success&quot;
+	// Verifique se $userData[app_id] é válido.
+}
+
+// Você também já tem $userData[user_id] disponível.
+// Vamos começar a trabalhar com o token:
+$fb->setAccessToken(<font color="#FF0000">$token</font>);
+$fb->sessionUpdate()  (Para retornar ->isLogged() true no futuro)
+
+$userData = $f->graphRequest('/me?fields=id,name,email')
+<i>// --> Agora você também pode procurar pelo e-mail, se disponível..</i></pre>
+				</blockquote>
+
+				<h3>Validação avançada/manual do Google:</h3>
+				<blockquote>
+					Antes de utilizar um token, é importante validar se ele pertence ao nosso aplicativo.<br />
+					Para isso é importante o chamado a <font color="#0000FF">/checkAccessToken.php</font>, que vai retornar erro caso não seja.<br />
+				<pre class='code'>
+$userData = json_decode(file_get_contents(&quot;https://www.googleapis.com/oauth2/v3/tokeninfo?id_token={<font color="#FF0000">$token</font>}"), true);
+// O campo $response['aud'] deve ser idêntico ao seu AppId.
+// O retorno será idêntico ao descrito em &quot;Validação Rápida &gt; Google on Success&quot;</pre>
+				</blockquote>
+
+			</blockquote>
+			
+	<p><b>rawData:</b></p>
+			<blockquote>
+				<table>
+					<tr valign='top'>
+						<td>(provider=google)</td>
+						<td>
+							<code>
+								access_token: "ya29.Glx0BgQPR9HrlTsP8g2uk...e9pJgfgiaEeTeXgmGwxEe4A",<br />
+								expires_at: 1544922669209,<br />
+								expires_in: 3600,<br />
+								first_issued_at: 1544919069209,<br />
+								<font color='blue'>id_token: "eyJhbGciOiJSUzI....WGKsLhqqJHtLBAVTxSAucvg"</font>,<br />
+								idpId: "google",<br />
+								login_hint: "AJDLj6JvJ604myPU1n...pV_SGdeRp9JhahuX71FjempQ",<br />
+								scope: "openid email profile https://www.googleapis.com/auth/userinfo.email https://www.googleapis.com/auth/plus.me https://www.googleapis.com/auth/userinfo.profile",<br />
+								session_state: {,<br />
+									&nbsp; &nbsp; extraQueryParams: { authuser: "0" },<br />
+								},<br />
+								token_type: "Bearer",<br />
+							</code>
+							<p>&nbsp;</td>
+					</tr>
+					<tr valign='top'>
+						<td>(provider=facebook)</td>
+						<td>
+							<code>
+								status: 'connected',<br />
+								authResponse: {<br />
+									&nbsp; &nbsp; <font color='blue'>accessToken: "EAAJGR9PBd3IB...lH5BMNQZDZD"</font>,<br />
+									&nbsp; &nbsp; data_access_expiration_time: 1552061775<br />
+									&nbsp; &nbsp; expiresIn: 6225<br />
+									&nbsp; &nbsp; reauthorize_required_in: 7776000<br />
+									&nbsp; &nbsp; signedRequest: "1wuzYEYNx7CZj0J....MwMzcxNjg2In0"<br />
+									&nbsp; &nbsp; userID: "10000000000000086"<br />
+								}</code></td>
+					</tr>
+				</table>
+
+		
+		</body>
+</html>

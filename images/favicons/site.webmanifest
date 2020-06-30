@@ -1,0 +1,21 @@
+{
+    "name": "Conecta Sementes",
+    "short_name": "Conecta Sementes",
+    "icons": [
+        {
+            "src": "android-chrome-192x192.png",
+            "sizes": "192x192",
+            "type": "image/png"
+        },
+        {
+            "src": "android-chrome-256x256.png",
+            "sizes": "256x256",
+            "type": "image/png"
+        }
+    ],
+    "theme_color": "#44b954",
+    "background_color": "#FFFFFF",
+    "start_url": "https://www.conectasementes.com.br/app/",
+    "display": "standalone",
+    "orientation": "any"
+}

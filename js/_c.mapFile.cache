@@ -1,0 +1,6 @@
+a7ec049aedb5f6d2	core/jquery-1.8.3	minified+production
+9932424a2b1269e2	base	minified+production
+31aa4364e1bd05e2	core/jquery-1.8.3,core/jquery-dInput2,core/jquery-dHelper2,core/jquery-dClickOutside	minified+production
+d9154ed5abd38e62	core/jquery-1.8.3,core/jquery-dRowDrag,core/jquery-dEip,core/jquery.fancybox.pack,core/jquery-dInput2,core/jquery.color-2.1.2.min,core/jquery-dClickOutside,core/jquery-coookie,core/jquery-dHelper2	minified+production
+4fb9cf9a9acef6a2	core/jquery-dEasyRefresh	minified+production
+base.2b1269e0	base	

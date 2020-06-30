@@ -1,0 +1,121 @@
+/*
+	Cores:
+	- Picker:      https://www.materialpalette.com/ ou https://www.materialui.co/
+	- Picker:      https://color.adobe.com/pt/create/color-wheel
+	- Significado: http://cymbolism.com/
+	
+	Guia:
+	http://www.websitebuilderexpert.com/how-to-choose-color-for-your-website/
+	
+	1. Choose a dominant color (brand color)
+	2. One or Two accent colors (cores de destaque)
+	3. One background color
+*/
+
+$textOnPrimary: #FFFFFF; // Texto sobre fundo em $primaryColor ('Text/Icons')
+$primaryColor: #61C56F; // Destaque predominante
+$primaryColorD: darken($primaryColor, 8%);
+$primaryColorD2: darken($primaryColorD, 8%);
+$primaryColorD3: darken($primaryColorD2, 8%);
+$primaryColorL: #262626;
+$primaryColorL2: lighten($primaryColorL, 8%);
+$primaryColorL3: lighten($primaryColorL2, 8%);
+
+$textOnAccent: #858585;
+$accentColor: #18BCED; // Destaque secundário
+$accentColorD: darken($accentColor, 8%);
+$accentColorD2: darken($accentColorD, 8%);
+$accentColorD3: darken($accentColorD2, 8%);
+$accentColorL: lighten($accentColor, 8%);
+$accentColorL2: lighten($accentColorL, 8%);
+$accentColorL3: lighten($accentColorL2, 8%);
+
+$textBlack: #212121; // Sempre 'quase preto'
+$textWhite: #FFFFFF; // Sempre cinza
+$dividerColor: #DBDBDB; // Sempre cinza claro
+
+.limitWidth {
+	max-width:    1200px;
+	margin-left:  auto;
+	margin-right: auto;
+}
+
+@mixin boxShadow {
+	box-shadow: -1px 1px 5px rgba(150, 150, 150, 1);
+}
+
+@mixin boxShadow2dp {
+	box-shadow: -1px 1px 10px rgba(150, 150, 150, 1);
+}
+
+@mixin valignMiddle {
+	display:     flex;
+	align-items: center;
+}
+
+@mixin txtShadow($c) {
+	text-shadow: -1px 1px 2px $c;
+}
+
+@mixin roundButton($color) {
+	display:         inline-block;
+	text-decoration: none;
+	border:          2px solid $color;
+	font-size:       large;
+	font-weight:     300;
+	border-radius:   25px;
+	padding:         8px 16px;
+	background:      inherit;
+	color:           $color;
+}
+
+@mixin dGrid($itemwidth, $itemspacing) {
+	// Monta um sistema de grid cuja ultima linha fique alinhada a esquerda.
+	// * O container principal deverá ocupar 100% da largura da tela (sem margin/padding)
+	// * Quando em mobile, o conteúdo poderá ocupar 120% de $itemwidth, e terá $itemspacing/2 das bordas
+	// * Valores ideais são: 320px e 32px
+	// 
+	.dgridContainer {
+		$n2colunas: ($itemwidth*2)+($itemspacing*3); // 32 + 320 + 32 + 320 + 32
+		$n3colunas: ($itemwidth*3)+($itemspacing*4);
+		$n4colunas: ($itemwidth*4)+($itemspacing*5);
+		$n5colunas: ($itemwidth*5)+($itemspacing*6);
+		
+		display:         flex;
+		flex-flow:       row wrap;
+		margin:          0px auto;
+		
+		// Mobile first:
+		justify-content: space-around;
+		
+		.dgridItem {
+			max-width:     $itemwidth * 1.20; // Tolerância de 20% a mais para mobiles.
+			margin-left:   $itemspacing/2;
+			margin-right:  $itemspacing/2;
+			@media screen and (min-width: $n2colunas) {
+				width: $itemwidth;
+			}
+			
+			// Mobile first:
+			width:         100%;
+			margin-bottom: $itemspacing;
+		}
+		@media screen and (min-width: $n2colunas) {
+			// Quero $itemspacing da borda. O margin-left me dá itemspacing/2, o restante precisa vir do padding.
+			padding:         0 $itemspacing/2;
+			justify-content: flex-start;
+		}
+		@media screen and (min-width: $n2colunas) {
+			width: $n2colunas;
+		}
+		@media screen and (min-width: $n3colunas) {
+			width: $n3colunas;
+		}
+		@media screen and (min-width: $n4colunas) {
+			width: $n4colunas;
+		}
+		@media screen and (min-width: $n5colunas) {
+			width: $n5colunas;
+		}
+	}
+}

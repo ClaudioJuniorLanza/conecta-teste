@@ -1,0 +1,513 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+
+img {
+    vertical-align: top;
+    border: 0;
+}
+
+a {
+    color: #0098DA;
+}
+
+a:hover {
+    color: #0033FF;
+}
+
+body, td {
+    font: 14px Arial, 'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+.barTop {
+    background: #4b4b4b;
+    color: #DDD;
+    border-bottom: 1px solid #000
+}
+
+.barTop .dropUsers a {
+    text-decoration: none;
+    color: #DDD;
+}
+
+.barTop .dropUsers i {
+    margin-left: 10px;
+}
+
+.barTop .dropUsers .container {
+    background: #777;
+    border: 1px solid #000;
+    border-top: 0;
+    position: absolute;
+    right: 0px;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.barTop .dropUsers small {
+    font-size: 10px;
+    color: #CCC;
+}
+
+.barTop .dropUsers div a {
+    display: block;
+    border-bottom: 1px solid #EEE;
+    padding: 2px 45px 2px 15px;
+    color: #FFF;
+    line-height: 30px;
+}
+
+.barTop .dropUsers div a:hover {
+    background: #999;
+    color: #FFF;
+}
+
+.barTop .dropUsers .active {
+    border-left: 5px solid #00F;
+    background: #999;
+    padding-left: 10px;
+}
+
+.barTop .dropUsers .logout {
+    background: #966;
+    border-bottom: 0;
+}
+
+.leftMenu {
+    background: #DDD;
+    border-right: 1px solid #CCC;
+    color: #999;
+    width: 215px;
+}
+
+.leftMenu .title {
+    background: #EEE;
+    padding: 5px 10px;
+    font-size: 12px;
+    font-style: italic;
+    margin-bottom: 17px;
+}
+
+.leftMenu ul {
+    margin: 0;
+    padding: 0
+}
+
+.leftMenu li {
+    margin: 0;
+    padding: 0;
+}
+
+.leftMenu li a {
+    display: block;
+    padding: 10px 10px 8px 13px;
+    background: #e9e9e9;
+    text-decoration: none;
+    color: #666;
+    margin-top: 3px;
+    white-space: nowrap;
+}
+
+.leftMenu li a i {
+    margin-right: 7px;
+}
+
+.leftMenu li a:hover {
+    background: #F4F4F4
+}
+
+.leftMenu li a:hover i {
+    color: #000
+}
+
+.leftMenu li span {
+    display: block;
+    height: 10px;
+    float: right;
+    font-size: 9px;
+    text-align: center;
+    padding-top: 3px;
+    color: #66C;
+}
+
+.leftMenu li .sel {
+    border-left: 5px solid #00F;
+    padding-left: 8px;
+    background: #FFF;
+    color: #000;
+}
+
+.leftMenu li ul li a {
+    background: #EEE;
+    font-size: 12px;
+    margin-top: 0;
+}
+
+.leftMenu li ul li ul li a {
+    background: #FFF;
+    font-size: 11px;
+    margin-bottom: 1px;
+    margin-left: 10px;
+    margin-top: 0;
+}
+
+
+/* Navigation info */
+#nav-info {
+    list-style: none;
+    margin: -20px -20px 20px;
+    padding: 0;
+    border-bottom: 1px solid #ddd;
+    background-color: #f6f6f6;
+}
+
+#nav-info > li:first-child {
+    background: none;
+    padding: 0 15px;
+}
+
+#nav-info > li {
+    float: left;
+    padding: 0 15px 0 20px;
+    height: 30px;
+    line-height: 32px;
+    color: #999;
+    font-size: 12px;
+    background-image: url('../images/nav_info_seperator.png');
+    background-position: top left;
+    background-repeat: no-repeat;
+    background-size: 5px 30px;
+}
+
+#nav-info > li > a {
+    color: #999;
+    text-decoration: none;
+}
+
+#nav-info > li > a:hover {
+    text-decoration: underline
+}
+
+#nav-info > li.active {
+    font-weight: bold;
+    color: #000
+}
+
+.bodyTitle {
+    background: #F3F3F3;
+    border-bottom: 1px solid #ddd;
+    padding: 10px;
+}
+
+.bodyTitle h1 {
+    margin: 0;
+    padding: 0;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.bodyTitle .goBack {
+    font-size: 12px;
+    color: #777;
+    margin-left: 25px;
+}
+
+.mainBody {
+    padding: 15px;
+    padding-bottom: 50px;
+    min-height: 750px;
+}
+
+
+.dALCampo {
+    text-align: left;
+    width: 100%;
+    border: 1px solid #CCC;
+    background: #EEE;
+    border-collapse: collapse
+}
+
+.dALCampo small {
+    font: 9px Arial
+}
+
+.dALCampo .start {
+    background: #DDD;
+    color: #000;
+    padding: 10px;
+    font-size: 16px
+}
+
+.dALCampo .descricao {
+    background: #EEE;
+    width: 20%;
+    text-align: right;
+    border-right: 0px;
+    padding: 5px
+}
+
+.dALCampo .edicao {
+    border-left: 0px;
+    width: 80%;
+    background: #FFF;
+    padding: 5px
+}
+
+.dALCampo .finish {
+    background: #EEE;
+    padding: 5px
+}
+
+.dALCampo .finish button {
+    border: 1px solid #4cae4c;
+    background: #5cb85c;
+    padding: 9px;
+    color: #FFF;
+    font-size: 14px;
+}
+
+.dALCampo .finish button:hover {
+    background: #4cae4c;
+}
+
+.dalSearchBox {
+    margin-left: 15px;
+    margin-bottom: 15px
+}
+
+.dalSearchBox .q_box {
+    font: 10px Arial
+}
+
+.dalSearchBox .q_lst {
+    font: 10px Arial
+}
+
+.dalSearchBox .q_box .q {
+    border-style: outset;
+    border-width: 1px;
+    font-style: normal;
+    font-variant: normal;
+    font-weight: normal;
+    font-size: 11px;
+    font-family: Arial
+}
+
+.dalLista {
+}
+
+.dalLista td {
+    padding: 5px 2px;
+    border-right: 1px solid #DDD
+}
+
+.dalLista .header a {
+    color: #666;
+    font-style: italic;
+    text-decoration: none
+}
+
+.dalLista .header a:hover {
+    text-decoration: underline
+}
+
+.dalLista .header td {
+    background: #DDD;
+    padding: 4px 0px
+}
+
+.dalLista .row1 {
+    background: #EEE;
+    border-bottom: 1px solid #ccc;
+}
+
+.dalLista .row2 {
+    background: #FFF;
+    border-bottom: 1px solid #ccc;
+}
+
+.dalLista .footer {
+    background: #DDD;
+    padding: 2px 4px;
+    border-bottom: 1px solid #888
+}
+
+.dalListaOptBox {
+    position: relative
+}
+
+.dalListaOptBox .mainBox {
+    background: #CCC;
+    position: absolute;
+    width: 112px;
+    left: -85px;
+    top: -5px;
+    border: 2px outset
+}
+
+.dalListaOptBox .mainBox .header {
+    background: #000;
+    color: #FFF;
+    font-weight: bold
+}
+
+.dalListaOptBox .mainBox .header a {
+    color: #CCC;
+    text-decoration: none
+}
+
+.dalListaOptBox .mainBox .body {
+    margin: 5px;
+    line-height: 150%
+}
+
+.dalListaOptBox .mainBox .body a {
+    color: #00F
+}
+
+.errorBox {
+    background: #FFC;
+    border: 2px dotted #F00;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    width: 80%
+}
+
+.succBox {
+    background: #CFC;
+    border: 2px dotted #F00;
+    padding: 5px;
+    margin: 0px 0px 10px 0px;
+    width: 80%
+}
+
+.blockColorBorder {
+    border: 1px solid #466
+}
+
+.blockColor {
+    background: #CCC
+}
+
+.blockGray {
+    background: #EEE
+}
+
+.moreOptionsPopup {
+    box-shadow: -3px 3px 5px 0px rgba(0, 0, 0, 0.75);
+    position: absolute;
+    right: 0px;
+    background: #FFF;
+    display: none;
+}
+
+.moreOptionsPopup a {
+    display: block;
+    white-space: nowrap;
+    padding: 7px 8px;
+    text-decoration: none;
+    color: #000;
+}
+
+.moreOptionsPopup a:hover {
+    background: #DDD;
+    color: #009;
+}
+
+@media print {
+    .noprint {
+        display: none;
+    }
+
+    .mainBody {
+        min-height: 0;
+    }
+}
+
+
+/**
+	dInput2 - Calendar
+**/
+.dpDiv {
+}
+
+.dpTable {
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 12px;
+    text-align: center;
+    color: #505050;
+    background-color: #ece9d8;
+    border: 1px solid #AAAAAA;
+}
+
+.dpTR {
+}
+
+.dpTitleTR {
+}
+
+.dpDayTR {
+}
+
+.dpTodayButtonTR {
+}
+
+.dpTD {
+    border: 1px solid #ece9d8;
+}
+
+.dpDayHighlightTD {
+    background-color: #CCCCCC;
+    border: 1px solid #AAAAAA;
+}
+
+.dpTDHover {
+    background-color: #aca998;
+    border: 1px solid #888888;
+    cursor: pointer;
+    color: red;
+}
+
+.dpTitleTD {
+}
+
+.dpButtonTD {
+}
+
+.dpTodayButtonTD {
+}
+
+.dpDayTD {
+    background-color: #CCCCCC;
+    border: 1px solid #AAAAAA;
+    color: white;
+}
+
+.dpTitleText {
+    font-size: 12px;
+    color: gray;
+    font-weight: bold;
+}
+
+.dpDayHighlight {
+    color: 4060 ff;
+    font-weight: bold;
+}
+
+.dpButton {
+    font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: gray;
+    background: #d8e8ff;
+    font-weight: bold;
+    padding: 0px;
+}
+
+.dpTodayButton {
+    font-family: Verdana, Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    color: gray;
+    background: #d8e8ff;
+    font-weight: bold;
+}

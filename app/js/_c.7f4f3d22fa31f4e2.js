@@ -1,0 +1,12 @@
+imaginacom={viewport:{width:function(){return window.innerWidth||document.documentElement.clientWidth||document.body.clientWidth},height:function(){return window.innerHeight||document.documentElement.clientHeight||document.body.clientHeight},},isMobile:function(){return(typeof window.orientation!=='undefined')}};$(function(){var _onResize=function(){var vpW=imaginacom.viewport.width();var vpH=imaginacom.viewport.height();var avW=$(window).width();var avH=$(window).height();$("#debugResponsive").css('text-align','right').html(vpW+"x"+vpH+"<br />")};$(window).resize(_onResize);_onResize()});$(function(){$("input:checkbox.sliderSwitch").each(function(){$(this).removeClass('sliderSwitch').wrap("<b class='sliderSwitch'>").after("<span class='slider'></span>")});var _toggleNext=function(jqoRef,skipAnimation){var isCbox=(jqoRef.tagName.toLowerCase()=='input'&&jqoRef.type.toLowerCase()=='checkbox');var jqoNext=_findNext($(jqoRef));var jqoPare=$(jqoRef).parent();while(!jqoNext.length&&jqoPare.length){jqoNext=_findNext(jqoPare);jqoPare=jqoPare.parent()}
+if(!jqoNext.length){return!1}
+if(isCbox){if(skipAnimation){jqoRef.checked?jqoNext.show():jqoNext.hide()}
+else{jqoRef.checked?jqoNext.slideDown():jqoNext.slideUp()}
+jqoRef.checked?jqoNext.addClass('shown'):jqoNext.removeClass('shown');return!0}
+if(jqoNext.is(":hidden")){$(jqoRef).addClass('shown');skipAnimation?jqoNext.show():jqoNext.slideDown()}
+else{$(jqoRef).removeClass('shown');skipAnimation?jqoNext.hide():jqoNext.slideUp()}
+return!1};var _findNext=function(jqoRef){var jqoNext=jqoRef.next();while(jqoNext.is("br,label,span")&&jqoNext.length){jqoNext=jqoNext.next()}
+return jqoNext};$("input:checkbox.toggleNext").each(function(){_toggleNext(this,!0)});$(".toggleNext").click(function(){_toggleNext(this);return!1});var _setGetParameter=function(paramName,paramValue){var url=window.location.href;var hash=location.hash;url=url.replace(hash,'');if(url.indexOf(paramName+"=")>=0){var prefix=url.substring(0,url.indexOf(paramName+'='));var suffix=url.substring(url.indexOf(paramName+'='));suffix=suffix.substring(suffix.indexOf("=")+1);suffix=(suffix.indexOf("&")>=0)?suffix.substring(suffix.indexOf("&")):"";url=prefix+paramName+"="+paramValue+suffix}
+else{if(url.indexOf("?")<0){url+="?"+paramName+"="+paramValue}
+else{url+="&"+paramName+"="+paramValue}}
+window.location.href=url+hash};$("#dropFilterBy").change(function(){_setGetParameter("f",this.value)});$("#dropFilterByVarie").change(function(){_setGetParameter("v",this.value)})})

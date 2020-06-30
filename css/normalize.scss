@@ -1,0 +1,25 @@
+@import "_base";
+
+*           { box-sizing: border-box; }
+html, body  { height: 100%; width: 100%; margin: 0; padding: 0 }
+html        {
+	font-family: 'Exo', 'Arial', serif;
+	font-size:   16px;
+	line-height: 1.5;
+}
+img    { vertical-align: top; border-style: none; }
+h1,h2,h3,h4 { font-weight: normal; margin-top: 0; }
+p { margin-bottom: 0 }
+
+a {
+	color: $primaryColor;
+	background-color: transparent;
+	-webkit-text-decoration-skip: objects;
+}
+a:active, a:hover { color: $primaryColorD; outline-width: 0; }
+a:active          { color: $primaryColorD2 }
+
+.fa    { display: inline-block; line-height: inherit !important; }
+.fa-fw { width: 1.28571429em; text-align: center; }
+
+

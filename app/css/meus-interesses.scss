@@ -1,0 +1,139 @@
+@import "_base";
+
+.wannaGroup {
+	margin-top: 32px;
+	> b {
+		display:       block;
+		padding:       8px 16px;
+		font-size:     18px;
+		border-bottom: 1px solid $dividerColor;
+		background:    linear-gradient(to bottom, #FFF, $accentColorL2 100%);
+	}
+	.subGroups {
+		display:    flex;
+		flex-wrap:  wrap;
+		border:     1px solid $dividerColor;
+		border-top: 0;
+		.group {
+			border-top: 1px solid $dividerColor;
+			width:      50%;
+			flex-basis: 50%;
+			flex-grow:  1;
+			@media (max-width: 750px) {
+				width:      100%;
+				flex-basis: 100%;
+			}
+			&:nth-of-type(2n - 1) {
+				border-right: 1px solid $dividerColor;
+			}
+			&:nth-of-type(1), &:nth-of-type(2) {
+				border-top: 0;
+			}
+			
+			.groupType {
+				padding:     8px 16px;
+				font-weight: bold;
+				background:  #EEE;
+			}
+			.groupDefault {
+				.separator {
+					padding:     4px 16px;
+					font-style:  italic;
+					font-weight: bold;
+					font-size:   14px;
+					height:      30px;
+				}
+				.row {
+					width:   100%;
+					padding: 8px;
+					display: flex;
+					//border-bottom: 1px solid $dividerColor;
+					.middle {
+						small {
+							display:     block;
+							font-weight: bold;
+						}
+						padding-left: 8px;
+						flex-grow:    1;
+					}
+					.left {
+						padding-left:    8px;
+						padding-right:   8px;
+						font-size:       18px;
+						display:         flex;
+						align-items:     center;
+						text-decoration: none;
+						color:           #F00;
+						&.addBtn {
+							color: $primaryColor;
+						}
+					}
+					.right {
+						
+					}
+					
+					&.main {
+						border-bottom: 1px solid $dividerColor;
+					}
+					
+					&:last-of-type {
+						border-bottom: 0;
+					}
+					&:hover {
+						background: #F9F9F9;
+					}
+				}
+				.addInteresse {
+					.middle {
+						flex-grow: 0;
+						input {
+							font-size:     16px;
+							padding:       2px 4px;
+							border-radius: 2px;
+							border:        1px solid #DDD;
+							width:         100%;
+						}
+					}
+					.right {
+						margin-left: 16px;
+						align-self:  flex-end;
+						button {
+							background:    $primaryColor;
+							color:         #FFF;
+							border:        0;
+							border-radius: 8px;
+							padding:       4px 8px;
+							transition:    .1s;
+							white-space:   nowrap;
+							&:disabled {
+								background: #DDD;
+								color:      #000;
+							}
+							@media (max-width: 750px) {
+								font-size: 14px;
+							}
+						}
+					}
+				}
+				.main {
+					border-bottom: 1px solid $dividerColor !important;
+				}
+			}
+		}
+		.groupRegioes {
+			width: 100%;
+			.twoColumns {
+				display:   flex;
+				flex-wrap: wrap;
+				.column {
+					flex-grow: 1;
+				}
+			}
+		}
+	}
+	.trocarDisclaimer {
+		padding:    16px;
+		border:     1px solid $dividerColor;
+		border-top: 0;
+	}
+}

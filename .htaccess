@@ -1,0 +1,54 @@
+<Files .gitignore>
+	Order allow,deny
+	Deny from all
+</Files>
+
+# Remove "Index of"
+Options -Indexes
+
+# Adiciona "Gzip" por padrao
+AddOutputFilterByType DEFLATE text/html text/css text/plain
+AddOutputFilterByType DEFLATE text/javascript application/javascript application/json
+AddOutputFilterByType DEFLATE application/xml text/xml
+AddOutputFilterByType DEFLATE image/x-icon 
+AddOutputFilterByType DEFLATE application/x-font-ttf font/opentype
+AddOutputFilterByType DEFLATE application/x-font-woff
+AddOutputFilterByType DEFLATE application/vnd.ms-fontobject
+AddOutputFilterByType DEFLATE image/svg+xml
+AddOutputFilterByType DEFLATE image/jpeg
+AddOutputFilterByType DEFLATE image/png
+AddOutputFilterByType DEFLATE image/gif
+
+<FilesMatch "\.scss$">
+	Order allow,deny
+	Deny from all
+</FilesMatch>
+<FilesMatch "_c\.(.+)\.(css|js)$">
+	<IfModule expires_module>
+		ExpiresActive On
+		ExpiresDefault "access 1 week"
+	</IfModule>
+	<IfModule headers_module>
+		Header append Cache-Control "public"
+	</IfModule>
+</FilesMatch>
+<FilesMatch "\.(jpg|png|gif)$">
+	<IfModule expires_module>
+		ExpiresActive On
+		ExpiresDefault "access 1 week"
+	</IfModule>
+	<IfModule headers_module>
+		Header append Cache-Control "public"
+	</IfModule>
+</FilesMatch>
+
+RewriteEngine on
+
+<FilesMatch "\.(php)$">
+  <IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "^clearence.plansson.dev.br"
+  </IfModule>
+</FilesMatch>
+
+RewriteRule ^anuncios(?:/(.*))?$ /app/callback.php
+RewriteRule ^vendas(?:/(.*))?$ /app/callback.php

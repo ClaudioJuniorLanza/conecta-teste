@@ -1,0 +1,455 @@
+/*
+ Cores:
+ - Picker:      https://www.materialpalette.com/ ou https://www.materialui.co/
+ - Picker:      https://color.adobe.com/pt/create/color-wheel
+ - Significado: http://cymbolism.com/
+ Guia:
+ http://www.websitebuilderexpert.com/how-to-choose-color-for-your-website/
+ 1. Choose a dominant color (brand color)
+ 2. One or Two accent colors (cores de destaque)
+ 3. One background color
+ */
+.limitWidth, header .alignCenterWithSides .topDesktop, .blockVejaComo h2, .blockVejaComo .steps, .blockPalmaDaMao {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+#iefix-wrapper {
+  display: flex;
+}
+#fullscreen-wrapper {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh;
+}
+header {
+  background-image: url(../images/bg-desktop.jpg);
+  background-position: center center;
+  background-repeat: no-repeat;
+  background-size: cover;
+  width: 100%;
+  min-height: 100vh;
+  max-height: 1088px;
+}
+@media (max-width: 550px) {
+  header {
+    margin-top: 56px;
+    display: block;
+    background-image: url(../images/bg-mobile.jpg);
+    height: calc(100vh + 60px - 56px);
+    min-height: initial;
+  }
+}
+header .alignCenterWithSides {
+  display: flex;
+}
+header .alignCenterWithSides .leftSide {
+  flex: 1;
+  background: rgba(255, 255, 255, 0.4);
+  max-height: 150px;
+  margin: 32px 0;
+}
+header .alignCenterWithSides .rightSide {
+  flex: 1;
+}
+header .alignCenterWithSides .topDesktop {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 260px;
+  flex-basis: 1200px;
+}
+@media (max-width: 550px) {
+  header .alignCenterWithSides .topDesktop {
+    padding: 32px 16px;
+    display: block;
+    height: auto;
+  }
+}
+header .alignCenterWithSides .topDesktop .logo {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  padding-left: 16px;
+  padding-right: 32px;
+  margin: 32px 0;
+  background: rgba(255, 255, 255, 0.4);
+  max-height: 150px;
+  align-self: stretch;
+  border-radius: 0 80px 80px 0;
+}
+@media (max-width: 550px) {
+  header .alignCenterWithSides .topDesktop .logo {
+    background: transparent;
+    max-width: 280px;
+    margin: 0 auto;
+  }
+}
+header .alignCenterWithSides .topDesktop .logo img {
+  width: 100%;
+  height: auto;
+  max-width: 390px;
+  min-width: 200px;
+}
+header .alignCenterWithSides .topDesktop .loginOptions {
+  margin-left: 32px;
+}
+header .alignCenterWithSides .topDesktop .loginOptions .options {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+@media (max-width: 550px) {
+  header .alignCenterWithSides .topDesktop .loginOptions .options {
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    margin: 0;
+    min-height: 56px;
+    padding: 0 16px;
+    background: #000;
+    box-shadow: -1px 1px 10px rgba(150, 150, 150, 1);
+  }
+}
+header .alignCenterWithSides .topDesktop .loginOptions .options img {
+  width: 100%;
+  height: auto;
+}
+header .alignCenterWithSides .topDesktop .loginOptions .options img.signup {
+  max-width: 215px;
+}
+header .alignCenterWithSides .topDesktop .loginOptions .options img.login {
+  max-width: 144px;
+}
+header .alignCenterWithSides .topDesktop .loginOptions .txtRequired {
+  flex: 5 5;
+  color: #fff;
+  margin-top: 8px;
+  margin-left: 12px;
+}
+@media (max-width: 550px) {
+  header .alignCenterWithSides .topDesktop .loginOptions .txtRequired {
+    display: none;
+  }
+}
+header .banner {
+  text-align: center;
+  padding: 0 16px;
+  color: #fff;
+}
+header .banner h1 {
+  margin-top: 100px;
+  margin-bottom: 0;
+  text-transform: uppercase;
+  font-size: 54px;
+  font-weight: bold;
+}
+@media (max-width: 1280px) {
+  header .banner h1 {
+    margin-top: 80px;
+  }
+}
+@media (max-width: 1000px) {
+  header .banner h1 {
+    margin-top: 0;
+  }
+}
+@media (max-width: 800px) {
+  header .banner h1 {
+    font-size: 40px;
+  }
+}
+header .banner h2 {
+  margin: 32px auto 0 auto;
+  font-size: 38px;
+  max-width: 660px;
+}
+@media (max-width: 800px) {
+  header .banner h2 {
+    max-width: 550px;
+    font-size: 26px;
+  }
+}
+@media (max-width: 550px) {
+  header .banner h2 {
+    font-size: 22px;
+  }
+}
+header .banner h2 span {
+  display: block;
+  font-size: 22px;
+}
+@media (max-width: 550px) {
+  header .banner h2 span {
+    font-size: 12px;
+  }
+}
+header .banner .apps {
+  display: inline-flex;
+  margin-top: 56px;
+  flex-wrap: wrap;
+}
+@media (max-width: 550px) {
+  header .banner .apps .intro {
+    width: 100%;
+    margin-bottom: 16px;
+  }
+}
+header .banner .apps img {
+  margin-left: 16px;
+}
+main {
+  flex-grow: 1;
+}
+.blockVejaComo {
+  /* Permalink - use to edit and share this gradient: http://colorzilla.com/gradient-editor/#000000+0,4c4c4c+100 */
+  background: #000;
+  /* Old browsers */
+  background: -moz-linear-gradient(left, #000 0%, #4c4c4c 100%);
+  /* FF3.6-15 */
+  background: -webkit-linear-gradient(left, #000 0%, #4c4c4c 100%);
+  /* Chrome10-25,Safari5.1-6 */
+  background: linear-gradient(to right, #000 0%, #4c4c4c 100%);
+  /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+  filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#000000', endColorstr='#4c4c4c', GradientType=1);
+  /* IE6-9 */
+  padding: 76px 16px;
+  color: #fff;
+}
+@media (max-width: 550px) {
+  .blockVejaComo {
+    padding: 32px 16px;
+  }
+}
+.blockVejaComo h2 {
+  text-transform: uppercase;
+  text-align: center;
+  font-size: 40px;
+  font-weight: bold;
+  margin-bottom: 48px;
+}
+@media (max-width: 1000px) {
+  .blockVejaComo h2 {
+    font-size: 28px;
+  }
+}
+@media (max-width: 550px) {
+  .blockVejaComo h2 {
+    font-size: 22px;
+  }
+}
+@media (max-width: 550px) {
+  .blockVejaComo h2 span {
+    display: block;
+  }
+}
+.blockVejaComo .steps {
+  padding: 0 16px;
+}
+@media (min-width: 750.1px) {
+  .blockVejaComo .steps {
+    display: flex;
+    justify-content: space-between;
+  }
+}
+.blockVejaComo .steps .step {
+  text-align: center;
+  font-size: 22px;
+  margin-left: 8px;
+  margin-bottom: 48px;
+  color: inherit;
+  text-decoration: none;
+  display: block;
+}
+.blockVejaComo .steps .step:first-of-type {
+  margin-left: 0;
+}
+@media (max-width: 1000px) {
+  .blockVejaComo .steps .step {
+    font-size: 16px;
+  }
+}
+.blockVejaComo .steps .step b {
+  display: block;
+  margin-top: 32px;
+  margin-bottom: 12px;
+}
+.blockVejaComo .steps .step span {
+  display: block;
+}
+.blockPalmaDaMao {
+  padding: 76px 16px;
+  text-align: center;
+}
+@media (max-width: 550px) {
+  .blockPalmaDaMao {
+    padding: 32px 16px;
+  }
+}
+.blockPalmaDaMao h2 {
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: #61c56f;
+}
+@media (max-width: 680px) {
+  .blockPalmaDaMao h2 {
+    font-size: 28px;
+  }
+}
+@media (max-width: 550px) {
+  .blockPalmaDaMao h2 {
+    font-size: 22px;
+  }
+}
+.blockPalmaDaMao h3 {
+  font-size: 22px;
+}
+@media (max-width: 680px) {
+  .blockPalmaDaMao h3 {
+    font-size: 18px;
+  }
+}
+@media (max-width: 550px) {
+  .blockPalmaDaMao h3 {
+    font-size: 16px;
+  }
+}
+.blockPalmaDaMao h3 span {
+  display: block;
+}
+@media (min-width: 750.1px) {
+  .blockPalmaDaMao .twoCols {
+    display: flex;
+  }
+}
+.blockPalmaDaMao .twoCols .image {
+  flex-grow: 0;
+  flex-shrink: 2;
+  flex-basis: 547px;
+}
+.blockPalmaDaMao .twoCols .image img {
+  width: 100%;
+  height: auto;
+  max-width: 547px;
+}
+.blockPalmaDaMao .twoCols .about {
+  flex-grow: 0;
+  flex-shrink: 2;
+  flex-basis: 621px;
+  text-align: justify;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+@media (min-width: 750.001px) {
+  .blockPalmaDaMao .twoCols .about {
+    padding-left: 32px;
+  }
+}
+.blockPalmaDaMao .twoCols .about h3 {
+  margin: 0;
+  text-transform: uppercase;
+}
+.blockFaleConosco {
+  background: #61c56f;
+  color: #fff;
+  text-align: center;
+  padding: 60px 16px;
+  font-size: 22px;
+}
+@media (max-width: 680px) {
+  .blockFaleConosco {
+    font-size: 16px;
+  }
+}
+@media (max-width: 550px) {
+  .blockFaleConosco {
+    padding: 32px 16px;
+    font-size: 16px;
+  }
+}
+.blockFaleConosco h2 {
+  font-size: 40px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+@media (max-width: 680px) {
+  .blockFaleConosco h2 {
+    font-size: 28px;
+  }
+}
+.blockFaleConosco h3 {
+  font-weight: bold;
+}
+.blockFaleConosco p {
+  margin: 0 auto;
+  max-width: 720px;
+}
+.blockFaleConosco .btChat {
+  margin-top: 48px;
+}
+.blockFaleConosco .emailHolder {
+  margin-top: 16px;
+  font-size: 18px;
+}
+@media (max-width: 680px) {
+  .blockFaleConosco .emailHolder {
+    font-size: 14px;
+  }
+}
+.blockFaleConosco .emailHolder a {
+  color: #fff;
+  text-decoration: none;
+}
+.blockFaleConosco .socialNetworks {
+  margin-top: 40px;
+}
+.blockFaleConosco .socialNetworks b {
+  display: block;
+}
+.blockFaleConosco .socialNetworks img {
+  text-align: center;
+  margin-top: 32px;
+}
+footer.rodape {
+  background: #585570;
+  color: #fff;
+  justify-content: center;
+  text-align: center;
+  padding: 28px 16px;
+}
+footer.rodape .termos {
+  display: block;
+  margin-top: 8px;
+  font-size: 12px;
+}
+footer.rodape .termos a {
+  color: #fff;
+}
+footer.rodape .agencia {
+  display: none;
+}
+@media (min-width: 600px) {
+  footer.rodape {
+    display: flex;
+    position: relative;
+  }
+  footer.rodape .agencia {
+    position: absolute;
+    right: 0;
+    top: 0;
+    height: 100%;
+    padding-right: 16px;
+    display: inline-flex;
+    align-items: center;
+  }
+  footer.rodape .agencia a {
+    color: #fff;
+    text-decoration: none;
+    font-size: small;
+  }
+}
+/*# sourceMappingURL=data:application/json,%7B%22version%22%3A3%2C%22sources%22%3A%5B%22template.scss%22%2C%22C%3A%5C%2Fxampp32%5C%2Fhtdocs%5C%2Fconectasementes%5C%2Fcss%5C%2F_base.scss%22%5D%2C%22names%22%3A%5B%5D%2C%22mappings%22%3A%22AAAD%3B%3B%3B%3B%3B%3B%3B%3B%3B%3BGAAA%3BACoCC%3BAAAA%3B%3BqBAAA%3BAAAA%3BADjCA%3BAAAA%2CgBAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3BoBAAA%3BAAAA%3BAAQA%3BAAAA%3B%3B%3B%3B%3B%3BqBAAA%3BAAAA%3BAASC%3BAAAA%3BAAAA%3B%3B%3B%3BwBAAA%3BAAAA%3BAAAA%3BAAQA%3BAAAA%2CgBAAA%3BAAAA%3BAAEC%3BAAAA%3B%3B%3BiBAAA%3BAAAA%3BAAMA%3BAAAA%2CUAAA%3BAAAA%3BAAGA%3BAAAA%3B%3B%3B%3BqBAAA%3BAAAA%3BAAOC%3BAAAA%3BAAAA%3B%3BiBAAA%3BAAAA%3BAAAA%3BAAKA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3B%2BBAAA%3BAAAA%3BAAWC%3BAAAA%3BAAAA%3B%3BmBAAA%3BAAAA%3BAAAA%3BAAKA%3BAAAA%3B%3B%3BmBAAA%3BAAAA%3BAAOD%3BAAAA%2CoBAAA%3BAAAA%3BAAEC%3BAAAA%3B%3BsBAAA%3BAAAA%3BAAIC%3BAAAA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3BqDAAA%3BAAAA%3BAAAA%3BAAWA%3BAAAA%3BeAAA%3BAAAA%3BAAGC%3BAAAA%2CmBAAA%3BAAAA%3BAAGA%3BAAAA%2CmBAAA%3BAAAA%3BAAKF%3BAAAA%3B%3B%3BoBAAA%3BAAAA%3BAAKC%3BAAAA%3BAAAA%2CkBAAA%3BAAAA%3BAAAA%3BAAQJ%3BAAAA%3B%3BcAAA%3BAAAA%3BAAIC%3BAAAA%3B%3B%3B%3BoBAAA%3BAAAA%3BAAOC%3BAAAA%3BAAAA%2CqBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%3BAAAA%2CkBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAID%3BAAAA%3B%3BmBAAA%3BAAAA%3BAAIC%3BAAAA%3BAAAA%3BoBAAA%3BAAAA%3BAAAA%3BAAIA%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%3BkBAAA%3BAAAA%3BAAGC%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAKF%3BAAAA%3B%3BkBAAA%3BAAAA%3BAAKE%3BAAAA%3BAAAA%3BwBAAA%3BAAAA%3BAAAA%3BAAKD%3BAAAA%2CoBAAA%3BAAAA%3BAAOH%3BAAAA%2CeAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3B%3B%3B%3B%3B%3B%3B%3B%3B%3BcAAA%3BAAAA%3BAASC%3BAAAA%3BAAAA%2CuBAAA%3BAAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3B%3BsBAAA%3BAAAA%3BAAOC%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAIC%3BAAAA%3BAAAA%2CmBAAA%3BAAAA%3BAAAA%3BAAKF%3BAAAA%2CkBAAA%3BAAAA%3BAAGC%3BAAAA%3BAAAA%3BmCAAA%3BAAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3B%3B%3B%3BiBAAA%3BAAAA%3BAAQC%3BAAAA%2CiBAAA%3BAAAA%3BAAGA%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%3B%3BsBAAA%3BAAAA%3BAAMA%3BAAAA%2CiBAAA%3BAAAA%3BAAOH%3BAAAA%3BqBAAA%3BAAAA%3BAAIC%3BAAAA%3BAAAA%2CuBAAA%3BAAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B%3BiBAAA%3BAAAA%3BAAKC%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAID%3BAAAA%2CkBAAA%3BAAAA%3BAAEC%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%2CiBAAA%3BAAAA%3BAAKA%3BAAAA%3BAAAA%2CkBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%3B%3BoBAAA%3BAAAA%3BAAIC%3BAAAA%3B%3BmBAAA%3BAAAA%3BAAMD%3BAAAA%3B%3B%3B%3B%3B%3ByBAAA%3BAAAA%3BAAQC%3BAAAA%3BAAAA%2CuBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%3B4BAAA%3BAAAA%3BAAQH%3BAAAA%3B%3B%3B%3BkBAAA%3BAAAA%3BAAMC%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%3BAAAA%3BoBAAA%3BAAAA%3BAAAA%3BAAIA%3BAAAA%3B%3B4BAAA%3BAAAA%3BAAIC%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAID%3BAAAA%2CoBAAA%3BAAAA%3BAAGA%3BAAAA%3BmBAAA%3BAAAA%3BAAIA%3BAAAA%2CmBAAA%3BAAAA%3BAAGA%3BAAAA%3BkBAAA%3BAAAA%3BAAGC%3BAAAA%3BAAAA%2CoBAAA%3BAAAA%3BAAAA%3BAAGA%3BAAAA%3BwBAAA%3BAAAA%3BAAKD%3BAAAA%2CmBAAA%3BAAAA%3BAAEC%3BAAAA%2CiBAAA%3BAAAA%3BAAGA%3BAAAA%3BmBAAA%3BAAAA%3BAASD%3BAAAA%3B%3B%3B%3BqBAAA%3BAAAA%3BAAOC%3BAAAA%3B%3BkBAAA%3BAAAA%3BAAIC%3BAAAA%2CcAAA%3BAAAA%3BAAKD%3BAAAA%2CgBAAA%3BAAAA%3BAAIA%3BAAAA%3BAAAA%3BuBAAA%3BAAAA%3BAAGC%3BAAAA%3B%3B%3B%3B%3B%3BwBAAA%3BAAAA%3BAAQC%3BAAAA%3B%3BqBAAA%3BAAAA%3BAAAA%22%7D */

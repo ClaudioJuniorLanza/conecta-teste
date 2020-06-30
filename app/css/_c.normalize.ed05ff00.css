@@ -1,0 +1,63 @@
+/*
+ Cores:
+ - Picker:      https://www.materialpalette.com/ ou https://www.materialui.co/
+ - Picker:      https://color.adobe.com/pt/create/color-wheel
+ - Significado: http://cymbolism.com/
+ Guia:
+ http://www.websitebuilderexpert.com/how-to-choose-color-for-your-website/
+ 1. Choose a dominant color (brand color)
+ 2. One or Two accent colors (cores de destaque)
+ 3. One background color
+ */
+.limitWidth {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+* {
+  box-sizing: border-box;
+}
+html, body {
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+html, button {
+  font-family: 'Exo', 'Arial', serif;
+  font-size: 16px;
+  line-height: 1.5;
+  color: #4d4d4d;
+}
+img {
+  vertical-align: top;
+  border-style: none;
+}
+h1, h2, h3, h4 {
+  font-weight: normal;
+  margin-top: 0;
+}
+p {
+  margin-bottom: 0;
+}
+a {
+  color: #61c56f;
+  background-color: transparent;
+  -webkit-text-decoration-skip: objects;
+}
+a:active, a:hover {
+  color: #44b954;
+  outline-width: 0;
+}
+a:active {
+  color: #399b47;
+}
+.fa {
+  display: inline-block;
+  line-height: inherit !important;
+}
+.fa-fw {
+  width: 1.28571429em;
+  text-align: center;
+}
+/*# sourceMappingURL=data:application/json,%7B%22version%22%3A3%2C%22sources%22%3A%5B%22normalize.scss%22%2C%22C%3A%5C%2Fxampp32%5C%2Fhtdocs%5C%2Fconectasementes%5C%2Fapp%5C%2Fcss%5C%2F_base.scss%22%5D%2C%22names%22%3A%5B%5D%2C%22mappings%22%3A%22AAAD%3B%3B%3B%3B%3B%3B%3B%3B%3B%3BGAAA%3BACoCC%3BAAAA%3B%3BqBAAA%3BAAAA%3BADlCA%3BAAAA%2CyBAAA%3BAAAA%3BAACA%3BAAAA%3B%3B%3BaAAA%3BAAAA%3BAACA%3BAAAA%3B%3B%3BiBAAA%3BAAAA%3BAAMA%3BAAAA%3BqBAAA%3BAAAA%3BAACA%3BAAAA%3BgBAAA%3BAAAA%3BAACA%3BAAAA%2CmBAAA%3BAAAA%3BAAEA%3BAAAA%3B%3BwCAAA%3BAAAA%3BAAKA%3BAAAA%3BmBAAA%3BAAAA%3BAACA%3BAAAA%2CiBAAA%3BAAAA%3BAAEA%3BAAAA%3BkCAAA%3BAAAA%3BAACA%3BAAAA%3BqBAAA%3BAAAA%22%7D */
